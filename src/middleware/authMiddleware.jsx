@@ -1,21 +1,22 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import Cookies from 'js-cookie';
-const AuthMiddleware = ({ children }) => {
-  const navigate = useNavigate();
+import { useDispatch } from 'react-redux';
+import { reqCurrentUser } from '../services/auth';
+import { login } from '../contexts/Redux/AuthSlice';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import Loader from '../common/Loader';
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    const userId = Cookies.get('userId');
+import { tokenIsExpired } from '../utils';
 
-    if (accessToken && user) {
-      navigate('/dashboard'); // Điều hướng đến dashboard nếu đã đăng nhập
-    } else {
-      navigate('/auth/signin'); // Điều hướng đến trang đăng nhập nếu không xác thực
-    }
-  }, [navigate]);
+const AuthMiddleware = () => {
+  const userId = Cookies.get('userId');
+  const refreshToken = Cookies.get('refreshToken');
 
-  return children;
+  if (!userId && tokenIsExpired(refreshToken)) {
+    return <Navigate to="/auth/signin" replace />;
+  }
+  return <Outlet />;
 };
 
 export default AuthMiddleware;

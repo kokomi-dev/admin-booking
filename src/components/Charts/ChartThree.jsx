@@ -46,12 +46,9 @@ const options = {
 };
 
 const ChartThree = () => {
-  const [state, setState] =
-    useState <
-    ChartThreeState >
-    {
-      series: [65, 34, 12, 56],
-    };
+  const [state, setState] = useState({
+    series: [65, 34, 12, 56],
+  });
 
   const handleReset = () => {
     setState((prevState) => ({
