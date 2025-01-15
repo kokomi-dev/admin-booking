@@ -10,10 +10,12 @@ import Settings from '../pages/Settings';
 import Chart from '../pages/Chart';
 import Alerts from '../pages/UiElements/Alerts';
 import Buttons from '../pages/UiElements/Buttons';
+import AuthMiddleware from '../middleware/authMiddleware';
 
 export const privateRoute = (
-  <Route>
+  <Route element={<AuthMiddleware />}>
     <Route
+      path="/"
       index
       element={
         <>

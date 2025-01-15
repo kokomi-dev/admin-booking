@@ -1,17 +1,44 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
-import LogoIcon from '../../images/logo/logo.png';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import clsx from 'clsx';
-
-const Header = (props: {
-  sidebarOpen: string | boolean | undefined;
-  setSidebarOpen: (arg0: boolean) => void;
-}) => {
+import { useMutation } from '@tanstack/react-query';
+import { reqCurrentUser } from '../../services/auth';
+import Cookies from 'js-cookie';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../../contexts/Redux/AuthSlice';
+import Loader from '../../common/Loader';
+import { Loading } from '../../common/LoadingPage/Loading';
+const Header = (props) => {
   const location = useLocation();
   const { pathname } = location;
+  const dispatch = useDispatch();
+  const userId = Cookies.get('userId');
+  const mutaionDataUser = useMutation({ mutationFn: reqCurrentUser });
+
+  useEffect(() => {
+    if (userId) {
+      mutaionDataUser.mutate(userId, {
+        onSuccess: async (res) => {
+          const userData = res.data.user;
+          return dispatch(
+            login({
+              ...userData,
+            }),
+          );
+        },
+        onError: async (error) => {
+          console.log(error);
+        },
+      });
+    }
+  }, [userId]);
+  if (mutaionDataUser.isPending) {
+    return <Loading />;
+  }
   return (
     <header
       className={clsx(
@@ -63,10 +90,6 @@ const Header = (props: {
             </span>
           </button>
           {/* <!-- Hamburger Toggle BTN --> */}
-
-          <Link className="block flex-shrink-0 lg:hidden" to="/">
-            <img src={LogoIcon} alt="Logo" />
-          </Link>
         </div>
 
         <div className="hidden sm:block">

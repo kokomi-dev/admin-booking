@@ -4,7 +4,7 @@ import SignUp from '../pages/Authentication/SignUp';
 import PageTitle from '../components/PageTitle';
 import PublicMiddleware from '../middleware/publicMiddleware';
 export const publicRoute = (
-  <Route>
+  <Route element={<PublicMiddleware />}>
     <Route
       path="/auth/signin"
       element={

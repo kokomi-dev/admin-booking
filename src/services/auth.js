@@ -1,4 +1,4 @@
-import { axiosClient } from 'Configs';
+import axiosClient from '../configs/axiosClient';
 
 const api_url = 'http://localhost:8080/api';
 

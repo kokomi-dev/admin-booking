@@ -29,7 +29,13 @@
     @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
   }
 }
-
+body,
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-menu {
+  font-family: 'Satoshi', sans-serif !important;
+}
 /* third-party libraries CSS */
 
 .tableCheckbox:checked ~ div span {
@@ -272,4 +278,20 @@ span.flatpickr-weekday,
       20% 100%,
       20% 100%;
   }
+}
+
+body {
+  font-family: 'Satoshi', sans-serif !important;
+}
+
+/* Ghi đè font cho các thành phần của Ant Design */
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-menu,
+.ant-select,
+.ant-dropdown,
+.ant-table,
+.ant-modal {
+  font-family: 'Satoshi', sans-serif !important;
 }

@@ -1,23 +1,34 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ClickOutside from '../ClickOutside';
-import UserOne from '../../images/user/user-01.png';
+import UserOne from '../../assets/images/user/user-01.png';
+import ModalConfirmLogout from '../ModalConfirmLogout/ModalConfirmLogout';
+import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
+import { logout } from '../../contexts/Redux/AuthSlice';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [isOpenModal, setOpenModal] = useState(false);
+  const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
   return (
-    <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
+    <ClickOutside
+      onClick={() => {
+        setDropdownOpen(false), setOpenModal(false);
+      }}
+      className="relative"
+    >
       <Link
         onClick={() => setDropdownOpen(!dropdownOpen)}
         className="flex items-center gap-4"
         to="#"
       >
         <span className="hidden text-right lg:block">
-          <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+          <span className="block text-sm text-black dark:text-white ">
+            {user.lastname + ' ' + user.firstname}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs capitalize">{user.roles}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
@@ -94,7 +105,19 @@ const DropdownUser = () => {
               </Link>
             </li>
           </ul>
-          <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+          <button
+            onClick={() => {
+              setOpenModal(true);
+              localStorage.removeItem('accessToken');
+              Cookies.remove('userId');
+              Cookies.remove('refreshToken');
+              Cookies.remove('accessToken');
+
+              logout();
+              navigate('/auth/signin');
+            }}
+            className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+          >
             <svg
               className="fill-current"
               width="22"
