@@ -117,7 +117,9 @@ span.flatpickr-weekday,
 }
 .flatpickr-day.inRange {
   @apply dark:!shadow-7;
-  box-shadow: -5px 0 0 #EFF4FB, 5px 0 0 #EFF4FB;
+  box-shadow:
+    -5px 0 0 #eff4fb,
+    5px 0 0 #eff4fb;
 }
 .flatpickr-day.inRange,
 .flatpickr-day.prevMonthDay.inRange,
@@ -212,4 +214,62 @@ span.flatpickr-weekday,
 
 [x-cloak] {
   display: none !important;
+}
+.loading {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.loader {
+  z-index: 35;
+  width: 85px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#003b96 0 0);
+  background:
+    var(--c) 0% 50%,
+    var(--c) 50% 50%,
+    var(--c) 100% 50%;
+  background-size: 20% 100%;
+  animation: l1 1s infinite linear;
+}
+@keyframes l1 {
+  0% {
+    background-size:
+      20% 100%,
+      20% 100%,
+      20% 100%;
+  }
+  33% {
+    background-size:
+      20% 10%,
+      20% 100%,
+      20% 100%;
+  }
+  50% {
+    background-size:
+      20% 100%,
+      20% 10%,
+      20% 100%;
+  }
+  66% {
+    background-size:
+      20% 100%,
+      20% 100%,
+      20% 10%;
+  }
+  100% {
+    background-size:
+      20% 100%,
+      20% 100%,
+      20% 100%;
+  }
 }
