@@ -5,6 +5,9 @@ const getAllUser = async (query) => {
     const queryString = new URLSearchParams(query).toString();
     const res = await fetch(api_url + '/auth?' + queryString, {
       method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
     const result = await res.json();
     return result;

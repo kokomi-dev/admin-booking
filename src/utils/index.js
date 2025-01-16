@@ -10,3 +10,6 @@ export const tokenIsExpired = (token) => {
   let currentDate = new Date();
   return decoded.exp < currentDate.getTime() / 1000;
 };
+export const checkReqUserSucess = (user) => {
+  return !!user && Object.keys(user).length > 0;
+};
