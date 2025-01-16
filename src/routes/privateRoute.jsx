@@ -1,7 +1,6 @@
 import { Route } from 'react-router-dom';
 import PageTitle from '../components/PageTitle';
 import ECommerce from '../pages/Dashboard/ECommerce';
-import Calendar from '../pages/Calendar';
 import Profile from '../pages/Profile';
 import FormElements from '../pages/Form/FormElements';
 import FormLayout from '../pages/Form/FormLayout';
@@ -11,6 +10,9 @@ import Chart from '../pages/Chart';
 import Alerts from '../pages/UiElements/Alerts';
 import Buttons from '../pages/UiElements/Buttons';
 import AuthMiddleware from '../middleware/authMiddleware';
+import AttractionsPage from '../pages/Attractions';
+import CreateAttraction from '../pages/Attractions/CreateAttraction/CreateAttraction';
+import EditAttraction from '../pages/Attractions/EditAttraction/EditAttraction';
 
 export const privateRoute = (
   <Route element={<AuthMiddleware />}>
@@ -24,15 +26,21 @@ export const privateRoute = (
         </>
       }
     />
+    {/* ROUTE ATTRACTION */}
     <Route
-      path="/calendar"
+      path="/attractions"
       element={
         <>
-          <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-          <Calendar />
+          <PageTitle title="Địa điểm du lịch - KoKoTravel" />
+          <AttractionsPage />
         </>
       }
     />
+    <Route path="attractions/create" element={<CreateAttraction />} />
+    <Route path="attractions/edit" element={<EditAttraction />} />
+
+    {/* END ATTRACTION */}
+
     <Route
       path="/profile"
       element={
