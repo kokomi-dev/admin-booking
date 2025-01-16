@@ -13,6 +13,9 @@ import AuthMiddleware from '../middleware/authMiddleware';
 import AttractionsPage from '../pages/Attractions';
 import CreateAttraction from '../pages/Attractions/CreateAttraction/CreateAttraction';
 import EditAttraction from '../pages/Attractions/EditAttraction/EditAttraction';
+import HotelsPage from '../pages/Hotels';
+import CreateHotel from '../pages/Hotels/CreateHotel/CreateHotel';
+import EditHotel from '../pages/Hotels/EditHotel/EditHotel';
 
 export const privateRoute = (
   <Route element={<AuthMiddleware />}>
@@ -41,15 +44,20 @@ export const privateRoute = (
 
     {/* END ATTRACTION */}
 
+    {/* HOTEL ROUTE */}
     <Route
-      path="/profile"
+      path="/hotels"
       element={
         <>
-          <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-          <Profile />
+          <PageTitle title="Lưu trú" />
+          <HotelsPage />
         </>
       }
     />
+    <Route path="/hotels/create" element={<CreateHotel />} />
+    <Route path="/hotels/edit" element={<EditHotel />} />
+
+    {/* END HOTEL */}
     <Route
       path="/forms/form-elements"
       element={
