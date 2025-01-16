@@ -1,7 +1,13 @@
 const api = 'http://localhost:8080/api/hotel';
-const getAllHotels = async () => {
+const getAllHotels = async (query) => {
   try {
-    const res = await fetch(api);
+    const queryString = new URLSearchParams(query).toString();
+    const res = await fetch(api + '?' + queryString, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const result = await res.json();
     return result;
   } catch (error) {
