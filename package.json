@@ -29,6 +29,7 @@
     "jsvectormap": "^1.5.3",
     "jwt-decode": "^4.0.0",
     "match-sorter": "^6.3.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-debounce-input": "^3.3.0",

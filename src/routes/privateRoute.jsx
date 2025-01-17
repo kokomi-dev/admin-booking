@@ -16,6 +16,8 @@ import EditAttraction from '../pages/Attractions/EditAttraction/EditAttraction';
 import HotelsPage from '../pages/Hotels';
 import CreateHotel from '../pages/Hotels/CreateHotel/CreateHotel';
 import EditHotel from '../pages/Hotels/EditHotel/EditHotel';
+import AccountUnit from '@/pages/ManagementAccounts/AccountUnit/AccountUnit';
+import AccountCustommer from '@/pages/ManagementAccounts/AccountCustommer/AccountCustommer';
 
 export const privateRoute = (
   <Route element={<AuthMiddleware />}>
@@ -58,21 +60,23 @@ export const privateRoute = (
     <Route path="/hotels/edit" element={<EditHotel />} />
 
     {/* END HOTEL */}
+
+    {/* ROUTE ACCOUNT */}
     <Route
-      path="/forms/form-elements"
+      path="/manage-account-unit"
       element={
         <>
-          <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-          <FormElements />
+          <PageTitle title="Quản lí tài khoản doanh nghiệp" />
+          <AccountUnit />
         </>
       }
     />
     <Route
-      path="/forms/form-layout"
+      path="/manage-account-custommer"
       element={
         <>
-          <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-          <FormLayout />
+          <PageTitle title="Quản lí tài khoản người dùng" />
+          <AccountCustommer />
         </>
       }
     />
