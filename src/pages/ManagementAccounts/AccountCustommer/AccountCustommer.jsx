@@ -2,7 +2,7 @@ import React from 'react';
 import AccountCustommerViews from './AccountCustommerViews';
 import { useQuery } from '@tanstack/react-query';
 import { QUERY_KEY_ACCOUNT } from '@/configs/QuerykeyStore';
-import { getAllUser } from '@/services/user';
+import { getAllUser } from '@/services/api/user';
 import { useSelector } from 'react-redux';
 import Loader from '@/common/Loader';
 

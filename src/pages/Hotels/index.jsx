@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { QUERY_KEY_HOTEL } from '../../configs/QuerykeyStore';
 import Loader from '../../common/Loader';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getAllHotels, updateStatus } from '../../services/hotel';
+import { getAllHotels, updateStatus } from '../../services/api/hotel';
 import { Link } from 'react-router-dom';
 import HotelsViews from './HotelsViews';
 import MessNotify from '../../components/MessNotify/MessNotify';

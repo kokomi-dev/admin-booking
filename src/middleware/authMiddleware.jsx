@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { reqCurrentUser } from '../services/auth';
+import { reqCurrentUser } from '../services/api/auth';
 import { login } from '../contexts/Redux/AuthSlice';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Loader from '../common/Loader';

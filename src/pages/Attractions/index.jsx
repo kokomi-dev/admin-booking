@@ -5,7 +5,7 @@ import {
   delAttractions,
   getAllAttractions,
   updateStatus,
-} from '../../services/attraction';
+} from '../../services/api/attraction';
 import Loader from '../../common/Loader';
 import AttractionViews from './AttractionViews';
 import MessNotify from '../../components/MessNotify/MessNotify';

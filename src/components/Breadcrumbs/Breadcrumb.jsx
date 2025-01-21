@@ -3,26 +3,26 @@ import { Link } from 'react-router-dom';
 const Breadcrumb = ({ pageName, backPage, backPageLink }) => {
   return (
     <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <h2 className="text-title-md2 font-semibold text-black dark:text-white">
+      <h2 className="text-[1.3rem] font-semibold text-black dark:text-white">
         {pageName}
       </h2>
 
       <nav>
-        <ol className="flex items-center gap-2">
+        <ol className="flex items-center gap-2 text-[0.8rem] font-normal">
           <li>
-            <Link className="font-medium" to="/">
+            <Link className="text-black_sub" to="/">
               Trang chủ /
             </Link>
           </li>
           {backPage && backPageLink && (
-            <li className="font-medium">
-              <Link className="font-medium" to={backPageLink}>
+            <li className="text-black_sub">
+              <Link className="" to={backPageLink}>
                 {backPage} /
               </Link>
             </li>
           )}
 
-          <li className="font-medium text-primary">{pageName}</li>
+          <li className=" text-blue_main_sub">{pageName}</li>
         </ol>
       </nav>
     </div>

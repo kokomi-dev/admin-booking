@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Loader from '../../common/Loader';
-import { reqlogin } from '../../services/auth';
+import { reqlogin } from '../../services/api/auth';
 import { useMutation } from '@tanstack/react-query';
 import MessNotify from '../../components/MessNotify/MessNotify';
 import { login } from '../../contexts/Redux/AuthSlice';

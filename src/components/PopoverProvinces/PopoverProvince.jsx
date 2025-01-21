@@ -1,4 +1,4 @@
-import { getDistricts } from '../../services/location';
+import { getDistricts } from '../../services/api/location';
 
 const PopoverListProvinces = ({
   hiddenModal,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { addAttracion } from '../../../services/attraction';
+import { addAttracion } from '../../../services/api/attraction';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../../common/Loader';
 import MessNotify from '../../../components/MessNotify/MessNotify';

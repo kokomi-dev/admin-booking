@@ -6,9 +6,9 @@ import {
   QUERY_KEY_HOTEL,
   QUERY_KEY_USER,
 } from '../../configs/QuerykeyStore';
-import { getAllAttractions } from '../../services/attraction';
-import { getAllHotels } from '../../services/hotel';
-import { getAllUser } from '../../services/user';
+import { getAllAttractions } from '../../services/api/attraction';
+import { getAllHotels } from '../../services/api/hotel';
+import { getAllUser } from '../../services/api/user';
 import { useSelector } from 'react-redux';
 import Loader from '../../common/Loader';
 import checkPermissionUser from '../../utils/checkPermissionUser';

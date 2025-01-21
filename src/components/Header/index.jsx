@@ -5,7 +5,7 @@ import DropdownUser from './DropdownUser';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import clsx from 'clsx';
 import { useMutation } from '@tanstack/react-query';
-import { reqCurrentUser } from '../../services/auth';
+import { reqCurrentUser } from '../../services/api/auth';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

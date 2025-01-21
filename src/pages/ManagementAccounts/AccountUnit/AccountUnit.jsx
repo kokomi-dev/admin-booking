@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { QUERY_KEY_ACCOUNT } from '@/configs/QuerykeyStore';
 import Loader from '@/common/Loader';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getAllUser } from '@/services/user';
-import { reqUpdateStatus } from '@/services/auth';
+import { getAllUser } from '@/services/api/user';
+import { reqUpdateStatus } from '@/services/api/auth';
 import MessNotify from '@/components/MessNotify/MessNotify';
 
 const AccountUnit = () => {
