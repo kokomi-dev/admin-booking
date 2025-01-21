@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -281,7 +282,11 @@ span.flatpickr-weekday,
 }
 
 body {
-  font-family: 'Satoshi', sans-serif !important;
+  font-family: 'Inter', serif !important;
+  font-weight: 400;
+  font-size: 62, 5%;
+  font-style: normal;
+  color: #111;
 }
 
 /* Ghi đè font cho các thành phần của Ant Design */
@@ -293,5 +298,5 @@ body {
 .ant-dropdown,
 .ant-table,
 .ant-modal {
-  font-family: 'Satoshi', sans-serif !important;
+  font-family: 'Inter', serif !important;
 }

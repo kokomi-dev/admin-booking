@@ -11,7 +11,7 @@ import {
 } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import TextArea from 'antd/es/input/TextArea';
-import { getCommune, getLocation } from '../../../services/location';
+import { getCommune, getLocation } from '../../../services/api/location';
 import Loader from '../../../common/Loader';
 import PopoverListProvinces from '../../../components/PopoverProvinces/PopoverProvince';
 import React from 'react';

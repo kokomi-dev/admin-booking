@@ -26,7 +26,7 @@ axiosClient.interceptors.response.use(
   },
   async (error) => {
     const originalReq = error.config;
-    if (error.response.status === 401 && !originalReq._retry) {
+    if (error.response?.status === 401 && !originalReq._retry) {
       originalReq._retry = true;
       const refreshToken = Cookies.get('refreshToken');
       if (!refreshToken) return Promise.reject(error);

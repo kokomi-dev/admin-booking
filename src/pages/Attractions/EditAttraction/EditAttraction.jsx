@@ -17,10 +17,10 @@ import { QUERY_KEY_ATTRACTION } from '../../../configs/QuerykeyStore';
 import {
   editAttracion,
   getDetailAttracion,
-} from '../../../services/attraction';
+} from '../../../services/api/attraction';
 import Loader from '../../../common/Loader';
 import ShowImage from '../../../components/ShowImage/ShowImage';
-import { getProvince } from '../../../services/location';
+import { getProvince } from '../../../services/api/location';
 import {
   getNameCommune,
   getNameDistrict,

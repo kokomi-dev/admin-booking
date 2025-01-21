@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Space, Table, Tooltip, Typography } from 'antd';
-import { reqUpdateStatus } from '@/services/auth';
+import { reqUpdateStatus } from '@/services/api/auth';
 import { QUERY_KEY_ACCOUNT } from '@/configs/QuerykeyStore';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

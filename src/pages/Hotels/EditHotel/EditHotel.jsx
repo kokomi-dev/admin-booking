@@ -3,13 +3,13 @@ import EditHotelView from './EditHotelView';
 import { useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { QUERY_KEY_HOTEL } from '../../../configs/QuerykeyStore';
-import { editHotel, getDetailHotel } from '../../../services/hotel';
+import { editHotel, getDetailHotel } from '../../../services/api/hotel';
 import { useForm } from 'antd/es/form/Form';
 import {
   getDistricts,
   getLocation,
   getProvince,
-} from '../../../services/location';
+} from '../../../services/api/location';
 import {
   getNameCommune,
   getNameDistrict,

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import LogoDark from '../../assets/images/logo/logo.png';
 import Logo from '../../assets/images/logo/logo.png';
 import { Form, Button, Input, Select, Space } from 'antd';
-import { reqRegister } from '../../services/auth';
+import { reqRegister } from '../../services/api/auth';
 import Loader from '../../common/Loader';
 import { useMutation } from '@tanstack/react-query';
 import MessNotify from '../../components/MessNotify/MessNotify';

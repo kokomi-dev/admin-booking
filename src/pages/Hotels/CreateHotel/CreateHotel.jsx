@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../../common/Loader';
 import { toast } from 'react-toastify';
-import { addHotel } from '../../../services/hotel';
+import { addHotel } from '../../../services/api/hotel';
 import {
   getNameCommune,
   getNameDistrict,
