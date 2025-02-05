@@ -1,14 +1,22 @@
-import Icon from '../../components/Icon/Icon';
 import { Button, Modal, Tooltip, Typography } from 'antd';
-import { MdOutlineFilterAltOff } from 'react-icons/md';
 import clsx from 'clsx';
-import React, { Fragment } from 'react';
-import InputDebounce from '../../components/InputDebounce/InputDebounce';
+import { Fragment } from 'react';
+import {
+  MdAdd,
+  MdCalendarMonth,
+  MdLockOpen,
+  MdLockOutline,
+  MdModeEdit,
+  MdOutlineDelete,
+  MdOutlineFilterAltOff,
+} from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { listWarningAttraction } from './constant';
-import checkInvalidateDDMMYYYY from '../../utils/checkInvalidate';
-import DatePickerVI from '../../components/DatePickerVI/DatePickerVI';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
+import DatePickerVI from '../../components/DatePickerVI/DatePickerVI';
+import Icon from '../../components/Icon/Icon';
+import InputDebounce from '../../components/InputDebounce/InputDebounce';
+import checkInvalidateDDMMYYYY from '../../utils/checkInvalidate';
+import { listWarningAttraction } from './constant';
 
 const AttractionViews = (props) => {
   const {
@@ -42,9 +50,13 @@ const AttractionViews = (props) => {
               navigate('/attractions/create');
             }}
           >
+            <MdAdd />
             Thêm mới
           </Button>
-          <Button className="bg-red-500 text-white border-none">Xóa</Button>
+          <Button className="bg-red-500 text-white border-none">
+            <MdOutlineDelete />
+            Xóa nhiều
+          </Button>
         </div>
       </div>
       <div className="text-[1rem] font-medium">
@@ -61,7 +73,7 @@ const AttractionViews = (props) => {
               key={index}
               className="w-[200px] flex items-center justify-start gap-x-4 mb-2"
             >
-              <div className="w-[140px]">{item.label}:</div>
+              <div className="w-[140px] text-[0.9rem]">{item.label}:</div>
               <div className={clsx('flex-1 h-[28px]', item.color)}></div>
             </div>
           );
@@ -71,34 +83,34 @@ const AttractionViews = (props) => {
         <table className="table min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr>
-              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[50px] relative">
+              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Tên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Địa chỉ
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Ảnh
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Số vé còn lại:
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -106,42 +118,42 @@ const AttractionViews = (props) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Ngày bắt đầu
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Giá
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[40px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[40px] relative">
                 Số ngày diễn ra
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Tiêu chí
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Tùy chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -301,9 +313,9 @@ const AttractionViews = (props) => {
                                 id: e._id,
                               });
                             }}
-                            className="text-[0.8rem] px-[2px]"
+                            className="text-[0.8rem] px-[4px]"
                           >
-                            Cập nhật ngày
+                            <MdCalendarMonth /> Cập nhật ngày
                           </Button>
                           <Modal
                             open={
@@ -311,7 +323,7 @@ const AttractionViews = (props) => {
                               openDatePicker.index === i
                             }
                             okText={
-                              <span className="font-medium text-black_main hover:text-white">
+                              <span className="font-medium text-white hover:text-white">
                                 Cập nhật ngày
                               </span>
                             }
@@ -389,52 +401,52 @@ const AttractionViews = (props) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
                     <td className="z-[10] text-xs border  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                      <div className="w-auto flex flex-col gap-y-1">
-                        <Button
+                      <div className="w-auto flex items-center justify-start gap-x-2">
+                        <Icon
                           onClick={() => {
                             navigate('/attractions/edit?slug=' + e.slug);
                           }}
-                          type="primary"
-                          className="w-fit text-white bg-yellow_main"
+                          className="text-blue_main_sub"
+                          tooltip="Sửa"
                         >
-                          Sửa
-                        </Button>
-                        <div className="w-fit flex items-center justify-start gap-x-1 ">
-                          {e.isActive === true ? (
-                            <Button
-                              className="w-fit bg-bg_primary_hover"
-                              onClick={() => {
-                                handleUpdateStatus({
-                                  data: { isActive: false },
-                                  id: e._id,
-                                });
-                              }}
-                            >
-                              Dừng HĐ
-                            </Button>
-                          ) : (
-                            <Button
-                              className="w-fit"
-                              onClick={() => {
-                                handleUpdateStatus({
-                                  data: { isActive: true },
-                                  id: e._id,
-                                });
-                              }}
-                            >
-                              Cho phép
-                            </Button>
-                          )}
-                          <Button
+                          <MdModeEdit />
+                        </Icon>
+                        {e.isActive === true ? (
+                          <Icon
+                            className="w-fit text-yellow_main"
                             onClick={() => {
-                              handleDeleteAttractions([e._id]);
+                              handleUpdateStatus({
+                                data: { isActive: false },
+                                id: e._id,
+                              });
                             }}
-                            className="w-fit"
-                            danger
+                            tooltip="Dừng HĐ"
                           >
-                            Xóa
-                          </Button>
-                        </div>
+                            <MdLockOutline />
+                          </Icon>
+                        ) : (
+                          <Icon
+                            className="w-fit text-green_main"
+                            onClick={() => {
+                              handleUpdateStatus({
+                                data: { isActive: true },
+                                id: e._id,
+                              });
+                            }}
+                            tooltip="Hoạt động"
+                          >
+                            <MdLockOpen />
+                          </Icon>
+                        )}
+                        <Icon
+                          onClick={() => {
+                            handleDeleteAttractions([e._id]);
+                          }}
+                          className="w-fit text-red-500"
+                          tooltip="Xóa"
+                        >
+                          <MdOutlineDelete />
+                        </Icon>
                       </div>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>

@@ -34,29 +34,29 @@ const ListBlogViews = ({
 
   return (
     <div className="w-full overflow-auto rounded-md text-black_main ">
-      <table className="table text-[0.9rem] font-medium min-w-max w-full h-auto overflow-auto  border-spacing-0">
+      <table className="table text-xs font-medium min-w-max w-full h-auto overflow-auto  border-spacing-0">
         <thead className="text-black">
-          <tr className="font-normal">
-            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[50px] relative">
+          <tr className=" text-xs">
+            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[50px] relative">
+            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Tiêu đề
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Tác giả
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -64,14 +64,14 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  max-w-[120px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  max-w-[120px] relative">
               Nội dung
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Mã DN
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -79,35 +79,35 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Chế độ
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Trạng thái
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Thể loại
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2   relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2   relative">
               Ngày tạo
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Tiêu chí
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -115,7 +115,7 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
               Tùy chọn
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -123,7 +123,7 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
             {user.roles === 'admin' && (
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_blue_sub p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Nâng cao
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -366,7 +366,7 @@ const ListBlogViews = ({
                 <tr
                   key={i}
                   className={clsx(
-                    'text-black_main text-[0.8rem] font-normal transition-all duration-150',
+                    'text-black_main text-[0.8rem] font-normal transition-all duration-150 text-xs',
                   )}
                 >
                   <td className="z-[10]  border  text-center  border-gray-300  border-l-1 border-t-0 p-2  w-[40px] relative">
@@ -555,10 +555,10 @@ const ListBlogViews = ({
                   </td>
                   {user.roles === 'admin' && (
                     <td className="z-[10]  border text-center  border-gray-300 border-l-0 border-t-0 p-2  w-[40px] relative">
-                      <div>
+                      <div className="flex flex-col items-start gap-y-1">
                         {e?.isApprove === false ? (
                           <Button
-                            className="text-green_main"
+                            className="text-green_main text-xs"
                             onClick={() => {
                               handleUpdateStatus({
                                 value: { isApprove: true },
@@ -576,9 +576,35 @@ const ListBlogViews = ({
                                 id: e._id,
                               });
                             }}
-                            className="text-red-500"
+                            className="text-red-500 text-xs"
                           >
                             Hủy duyệt
+                          </Button>
+                        )}
+                        {e.isTrending === false ? (
+                          <Button
+                            className="text-blue_main_sub text-xs
+                            "
+                            onClick={() => {
+                              handleUpdateStatus({
+                                value: { isTrending: true },
+                                id: e._id,
+                              });
+                            }}
+                          >
+                            Đặt nổi bật
+                          </Button>
+                        ) : (
+                          <Button
+                            onClick={() => {
+                              handleUpdateStatus({
+                                value: { isTrending: false },
+                                id: e._id,
+                              });
+                            }}
+                            className="text-red-500 text-xs"
+                          >
+                            Hủy nổi bật
                           </Button>
                         )}
                       </div>
