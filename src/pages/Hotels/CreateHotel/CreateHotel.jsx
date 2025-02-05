@@ -20,12 +20,16 @@ import {
   getNameProvince,
 } from '../../../utils/location';
 import Breadcrumb from '../../../components/Breadcrumbs/Breadcrumb';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import MessNotify from '@/components/MessNotify/MessNotify';
+import { useNavigate } from 'react-router-dom';
+import { QUERY_KEY_HOTEL } from '@/configs/QuerykeyStore';
 const { TextArea } = Input;
 
 const CreateHotel = () => {
-  const isLoading = useSelector((state) => state.loading.isLoading);
-
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { Option } = Select;
 
   const [file, setFile] = useState([]);
@@ -60,7 +64,7 @@ const CreateHotel = () => {
       }
     };
     getProvince();
-  }, [dispatch]);
+  }, []);
   useEffect(() => {
     const newInfoRoom = Array.from({ length: countRoom }, (_) => ({
       name: '',
@@ -137,6 +141,9 @@ const CreateHotel = () => {
       return setFull(res.data);
     }
   };
+  const mutationAddHotel = useMutation({
+    mutationFn: addHotel,
+  });
   // handle request to server
   const handleSubmit = async (value) => {
     const provinceName = await getNameProvince(full.tinh);
@@ -157,6 +164,8 @@ const CreateHotel = () => {
     formData.append('location_district_name', districtName);
     formData.append('location_commune_name', communeName);
     formData.append('city', searchProvinces.name);
+    formData.append('unitCode', user.idCode);
+
     infoRoom.forEach((room, index) => {
       formData.append(`infoRoom[${index}][name]`, room.name);
       formData.append(`infoRoom[${index}][detail]`, room.detail);
@@ -175,15 +184,19 @@ const CreateHotel = () => {
     [...file].forEach((imageFile) => {
       formData.append('images', imageFile);
     });
-    const res = await addHotel(formData, dispatch);
-    console.log(res);
-    if (res.code === 201) {
-      return toast.success('tạo mới thành công');
-    } else {
-      return toast.warning('tạo mới lỗi');
-    }
+    mutationAddHotel.mutate(formData, {
+      onSuccess: async (res) => {
+        if (res.status == 200) {
+          MessNotify.success('Tạo thành công nơi lưu trú');
+          queryClient.invalidateQueries(QUERY_KEY_HOTEL.GET_ALL);
+          navigate('/hotels');
+        } else {
+          MessNotify.error('Lỗi khi tạo mới. Vui lòng liên hệ quản trị viên');
+        }
+      },
+    });
   };
-  if (isLoading) {
+  if (mutationAddHotel.isPending) {
     return <Loader />;
   }
   return (

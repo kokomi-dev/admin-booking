@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import EditHotelView from './EditHotelView';
-import { useSearchParams } from 'react-router-dom';
+import Loader from '@/common/Loader';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useForm } from 'antd/es/form/Form';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { QUERY_KEY_HOTEL } from '../../../configs/QuerykeyStore';
 import { editHotel, getDetailHotel } from '../../../services/api/hotel';
-import { useForm } from 'antd/es/form/Form';
 import {
   getDistricts,
   getLocation,
@@ -15,6 +15,7 @@ import {
   getNameDistrict,
   getNameProvince,
 } from '../../../utils/location';
+import EditHotelView from './EditHotelView';
 const EditHotel = () => {
   const [params] = useSearchParams();
   const slug = params.get('slug');
@@ -172,7 +173,9 @@ const EditHotel = () => {
       },
     );
   };
-
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <EditHotelView
       form={form}
