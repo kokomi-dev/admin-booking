@@ -71,7 +71,6 @@ const HotelsViews = (props) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Breadcrumb pageName="Lưu trú" />
-
       <div className="w-full flex items-center justify-between">
         <Typography.Paragraph className="text-[1rem] font-medium">
           Có tất cả
@@ -95,10 +94,36 @@ const HotelsViews = (props) => {
           </Button>
         </div>
       </div>
-      <p className="w-full text-start flex items-center justify-start ">
-        <span className="text-red-500">Lưu ý: </span> Bạn phải đặt lại số phòng
-        nếu số phòng đã hết, số phòng đã hết khách hàng sẽ không thể đặt
+      <p className="w-full text-start flex items-center justify-start text-[1rem] ">
+        <span className="text-red-600 font-medium">1.Lưu ý: </span> Bạn phải đặt
+        lại số phòng nếu số phòng đã hết, số phòng đã hết khách hàng sẽ không
+        thể đặt
       </p>
+      <span className="text-red-600 font-medium">
+        {' '}
+        2.Chỉnh sửa thông tin phòng:{' '}
+      </span>{' '}
+      <ul className="pl-4 list-disc text-[0.95rem]">
+        <li>
+          Thông tin phòng, chỗ nghỉ của mỗi nơi lưu trú có thể cập nhật lại
+          thông tin trong phần mở rộng của phòng. Nếu có thắc mắc về sử dụng hãy
+          liên hệ với quản trị viên
+        </li>
+        <li>
+          Cập nhật số phòng hiện có của từng phòng để người dùng có thể lựa chọn
+          đặt phòng của bạn
+        </li>
+      </ul>
+      <span className="text-red-600 font-medium"> 3.Thông báo hiển thị: </span>{' '}
+      <div className="flex flex-col lg:max-w-[70%]">
+        <div className="grid grid-cols-[15%,2%,80%] gap-x-1">
+          <div className="bg-red-200 w-[100px] h-[30px]"></div>
+          <span className="text-center">-</span>
+          <p className="text-[0.95rem]">
+            Đã hết phòng trống, vui lòng bổ sung thêm nếu có phòng trống
+          </p>
+        </div>
+      </div>
       <div className="w-full overflow-auto rounded-md ">
         <table className="table min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">

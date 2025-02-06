@@ -144,14 +144,7 @@ const EditHotel = () => {
     formData.append('location_district_name', districtName);
     formData.append('location_commune_name', communeName);
     state.images.forEach((item) => formData.append('images[]', item));
-    infoRoom.forEach((room, index) => {
-      formData.append(`infoRoom[${index}][name]`, room.name);
-      formData.append(`infoRoom[${index}][detail]`, room.details);
-      formData.append(`infoRoom[${index}][price]`, room.price);
-      formData.append(`infoRoom[${index}][numberPeople]`, room.numberPeople);
-      formData.append(`infoRoom[${index}][sale]`, room.sale);
-      formData.append(`infoRoom[${index}][isAddChildren]`, room.isAddChildren);
-    });
+
     file !== null &&
       [...file].forEach((imageFile) => {
         formData.append('images', imageFile);
