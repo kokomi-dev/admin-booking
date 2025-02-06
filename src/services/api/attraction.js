@@ -1,3 +1,5 @@
+import axiosClient from '@/configs/axiosClient';
+
 const api = 'http://localhost:8080/api/attraction';
 const getAllAttractions = async (query) => {
   try {
@@ -68,16 +70,7 @@ const getDetailAttracion = async ({ slug }) => {
   }
 };
 const delAttractions = async (idDelete) => {
-  try {
-    const res = await fetch(api + '/delete', {
-      method: 'DELETE',
-      body: JSON.stringify(idDelete),
-    });
-    const result = await res.json();
-    return result;
-  } catch (error) {
-    console.error('Lỗi khi lấy thông tin chi tiết:', error);
-  }
+  return axiosClient.delete(`/attraction/${idDelete}`);
 };
 export {
   getAllAttractions,

@@ -9,6 +9,7 @@ import formatVietnamCurrency from '@/utils/formatPrice';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Select, Tooltip } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
+import clsx from 'clsx';
 import { Fragment, useState } from 'react';
 import {
   MdDelete,
@@ -342,7 +343,13 @@ const HotelListRoomView = ({
           {listRoom.length > 0 ? (
             listRoom.map((e, i) => {
               return (
-                <tr key={i}>
+                <tr
+                  key={i}
+                  className={clsx(
+                    e?.numberOfRoom === 0 && 'bg-red-200',
+                    e?.numberOfRoom === undefined && 'bg-red-200',
+                  )}
+                >
                   <td className="z-[10] text-center text-xs border text-black font-normal border-gray-300 border-l-0 border-t-0 p-2 ">
                     {i + 1}
                   </td>

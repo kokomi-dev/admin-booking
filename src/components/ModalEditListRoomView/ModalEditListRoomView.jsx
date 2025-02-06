@@ -34,7 +34,7 @@ const ModalEditListRoomView = ({ isOpen, setIsOpen }) => {
 
         isAddChildren: dataEdit.isAddChildren,
       });
-      setCountDetail(dataEdit.details.length);
+      setCountDetail(dataEdit.details?.length || 0);
     }
   }, [isOpen]);
   const mutationAddRoomHotel = useMutation({
@@ -169,7 +169,7 @@ const ModalEditListRoomView = ({ isOpen, setIsOpen }) => {
                 ]}
               />
               <div className="flex gap-x-2 items-center">
-                <label>Số phòng hiện còn:</label>
+                <label>Số phòng hiện có:</label>
                 <InputNumber
                   value={infoRoom.numberOfRoom}
                   min={0}

@@ -56,7 +56,11 @@ const EditHotelView = ({
         backPageLink="/hotels"
         pageName={`Chỉnh sửa lưu trú: ${nameHotel}`}
       />
-
+      <h3>Chỉnh sửa thông tin các phòng sẽ ở mục riêng từng phòng</h3>
+      <h4>
+        <span className="text-red-600">Lưu ý:</span>Cập nhật số phòng hiện có
+        một cách nhanh chóng để khách hàng không bỏ lỡ địa điểm lưu trú của bạn
+      </h4>
       <Form
         form={form}
         labelCol={{
@@ -292,122 +296,6 @@ const EditHotelView = ({
             })}
           </Form.Item>
         )}
-
-        <Form.Item label="Số loại  phòng">
-          <InputNumber
-            value={state.countRoom}
-            onChange={(value) => {
-              setState((_state) => ({
-                ..._state,
-                countRoom: value,
-              }));
-            }}
-            min={1}
-          />
-        </Form.Item>
-        <Form.Item label="Thông tin các loại phòng">
-          {new Array(state.countRoom).fill(0).map((_, index) => {
-            return (
-              <div className="border-[1px] border-[#999] p-2" key={index}>
-                <div>
-                  <label>Tên loại phòng {index + 1}</label>
-                  <Input
-                    value={infoRoom[index].name}
-                    onChange={(e) => {
-                      const { value } = e.target;
-                      setInfoRoom((pre) => {
-                        const newVar = [...pre];
-                        newVar[index].name = value;
-                        return newVar;
-                      });
-                    }}
-                  />
-                </div>
-                <TextArea
-                  value={infoRoom[index].details}
-                  key={index}
-                  placeholder={`Mô tả  ${index + 1}`}
-                  name={`description ${index + 1}`}
-                  rows={2}
-                  className="mb-2"
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setInfoRoom((pre) => {
-                      const newVar = [...pre];
-                      newVar[index].detail = value;
-                      return newVar;
-                    });
-                  }}
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Nhập mô tả ' + index + 1 + ' này',
-                    },
-                  ]}
-                />
-                <div className="flex items-center gap-x-2">
-                  <div>
-                    <label>Giá tiền</label>
-                    <InputNumber
-                      value={infoRoom[index].price}
-                      min={0}
-                      onChange={(e) => {
-                        setInfoRoom((pre) => {
-                          const newVar = [...pre];
-                          newVar[index].price = e;
-                          return newVar;
-                        });
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Số lượng người / phòng</label>
-                    <InputNumber
-                      value={infoRoom[index].numberPeople}
-                      min={1}
-                      onChange={(e) => {
-                        setInfoRoom((pre) => {
-                          const newVar = [...pre];
-                          newVar[index].numberPeople = e;
-                          return newVar;
-                        });
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Giảm giá</label>
-
-                    <InputNumber
-                      value={infoRoom[index].sale}
-                      min={1}
-                      onChange={(e) => {
-                        setInfoRoom((pre) => {
-                          const newVar = [...pre];
-                          newVar[index].sale = e;
-                          return newVar;
-                        });
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label>Được thêm trẻ em</label>
-                    <Checkbox
-                      checked={infoRoom[index].isAddChildren}
-                      onChange={(e) => {
-                        const { checked } = e.target;
-                        setInfoRoom((pre) => {
-                          const newVar = [...pre];
-                          newVar[index].isAddChildren = checked;
-                          return newVar;
-                        });
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </Form.Item>
 
         <Form.Item
           label="Thêm ảnh mới "

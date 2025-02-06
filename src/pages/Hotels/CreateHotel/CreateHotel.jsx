@@ -171,6 +171,8 @@ const CreateHotel = () => {
       formData.append(`infoRoom[${index}][detail]`, room.detail);
       formData.append(`infoRoom[${index}][price]`, room.price);
       formData.append(`infoRoom[${index}][numberPeople]`, room.numberPeople);
+      formData.append(`infoRoom[${index}][numberOfRoom]`, room.numberOfRoom);
+
       formData.append(`infoRoom[${index}][sale]`, room.sale);
       formData.append(`infoRoom[${index}][isAddChildren]`, room.isAddChildren);
     });
@@ -479,6 +481,19 @@ const CreateHotel = () => {
                   ]}
                 />
                 <div className="flex items-center gap-x-2">
+                  <div className="flex gap-x-2 items-center">
+                    <label>Số phòng hiện có:</label>
+                    <InputNumber
+                      value={infoRoom.numberOfRoom}
+                      min={0}
+                      onChange={(e) => {
+                        setInfoRoom((pre) => ({
+                          ...pre,
+                          numberOfRoom: e,
+                        }));
+                      }}
+                    />
+                  </div>
                   <div>
                     <label>Giá tiền</label>
                     <InputNumber
