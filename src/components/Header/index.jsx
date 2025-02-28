@@ -1,22 +1,20 @@
-import { useLocation } from 'react-router-dom';
-import DropdownMessage from './DropdownMessage';
-import DropdownNotification from './DropdownNotification';
-import DropdownUser from './DropdownUser';
-import DarkModeSwitcher from './DarkModeSwitcher';
-import clsx from 'clsx';
 import { useMutation } from '@tanstack/react-query';
-import { reqCurrentUser } from '../../services/api/auth';
+import clsx from 'clsx';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../../contexts/Redux/AuthSlice';
+import { useLocation } from 'react-router-dom';
 import Loader from '../../common/Loader';
-import { Loading } from '../../common/LoadingPage/Loading';
+import { login } from '../../contexts/Redux/AuthSlice';
+import { reqCurrentUser } from '../../services/api/auth';
+import DropdownMessage from './DropdownMessage';
+import DropdownNotification from './DropdownNotification';
+import DropdownUser from './DropdownUser';
 const Header = (props) => {
   const location = useLocation();
   const { pathname } = location;
   const dispatch = useDispatch();
-  const userId = Cookies.get('userId');
+  const userId = Cookies.get('userIdAdmin');
   const mutaionDataUser = useMutation({ mutationFn: reqCurrentUser });
 
   useEffect(() => {
@@ -130,10 +128,6 @@ const Header = (props) => {
 
         <div className="flex items-center gap-3 2xsm:gap-7">
           <ul className="flex items-center gap-2 2xsm:gap-4">
-            {/* <!-- Dark Mode Toggler --> */}
-            <DarkModeSwitcher />
-            {/* <!-- Dark Mode Toggler --> */}
-
             {/* <!-- Notification Menu Area --> */}
             <DropdownNotification />
             {/* <!-- Notification Menu Area --> */}

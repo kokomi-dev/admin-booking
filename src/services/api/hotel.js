@@ -59,7 +59,6 @@ const updateStatus = async (data) => {
     return result;
   } catch (error) {
     console.error('Lỗi khi gửi form:', error);
-  } finally {
   }
 };
 // END HOTEL

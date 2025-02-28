@@ -25,10 +25,12 @@ const DropdownUser = () => {
           to="#"
         >
           <span className="hidden text-right lg:block">
-            <span className="block text-sm text-black dark:text-white ">
+            <span className="block text-sm font-semibold text-black dark:text-white ">
               {user.lastname + ' ' + user.firstname}
             </span>
-            <span className="block text-xs capitalize">{user.roles}</span>
+            <span className="block text-xs capitalize font-medium text-blue_main_sub">
+              {user.roles}
+            </span>
           </span>
 
           <span className="h-12 w-12 rounded-full">
@@ -107,9 +109,9 @@ const DropdownUser = () => {
             </ul>
             <button
               onClick={() => {
-                localStorage.removeItem('accessToken');
-                Cookies.remove('userId');
-                Cookies.remove('refreshToken');
+                localStorage.removeItem('accessTokenAdmin');
+                Cookies.remove('userIdAdmin');
+                Cookies.remove('refreshTokenAdmin');
                 logout();
                 navigate('/auth/signin');
                 window.location.reload();

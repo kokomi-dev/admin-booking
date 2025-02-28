@@ -1,23 +1,19 @@
+import BlogPage from '@/pages/Blogs';
+import CreateBlog from '@/pages/Blogs/CreateBlog/CreateBlog';
+import EditBlog from '@/pages/Blogs/EditBlog/EditBlog';
+import { BookingAttractions, BookingHotels } from '@/pages/Booking';
+import AccountCustommer from '@/pages/ManagementAccounts/AccountCustommer/AccountCustommer';
+import AccountUnit from '@/pages/ManagementAccounts/AccountUnit/AccountUnit';
 import { Route } from 'react-router-dom';
 import PageTitle from '../components/PageTitle';
-import ECommerce from '../pages/Dashboard/ECommerce';
-import Profile from '../pages/Profile';
-import Tables from '../pages/Tables';
-import Settings from '../pages/Settings';
-import Chart from '../pages/Chart';
 import AuthMiddleware from '../middleware/authMiddleware';
 import AttractionsPage from '../pages/Attractions';
 import CreateAttraction from '../pages/Attractions/CreateAttraction/CreateAttraction';
 import EditAttraction from '../pages/Attractions/EditAttraction/EditAttraction';
+import ECommerce from '../pages/Dashboard/ECommerce';
 import HotelsPage from '../pages/Hotels';
 import CreateHotel from '../pages/Hotels/CreateHotel/CreateHotel';
 import EditHotel from '../pages/Hotels/EditHotel/EditHotel';
-import AccountUnit from '@/pages/ManagementAccounts/AccountUnit/AccountUnit';
-import AccountCustommer from '@/pages/ManagementAccounts/AccountCustommer/AccountCustommer';
-import { BookingAttractions, BookingHotels } from '@/pages/Booking';
-import BlogPage from '@/pages/Blogs';
-import CreateBlog from '@/pages/Blogs/CreateBlog/CreateBlog';
-import EditBlog from '@/pages/Blogs/EditBlog/EditBlog';
 
 export const privateRoute = (
   <Route element={<AuthMiddleware />}>
@@ -33,7 +29,7 @@ export const privateRoute = (
     />
     {/* ROUTE ATTRACTION */}
     <Route
-      path="/attractions"
+      path="/attractions-list"
       element={
         <>
           <PageTitle title="Địa điểm du lịch - KoKoTravel" />
@@ -48,7 +44,7 @@ export const privateRoute = (
 
     {/* HOTEL ROUTE */}
     <Route
-      path="/hotels"
+      path="/hotels-list"
       element={
         <>
           <PageTitle title="Lưu trú" />

@@ -300,3 +300,7 @@ body {
 .ant-modal {
   font-family: 'Inter', serif !important;
 }
+
+.show-content-blog > p > img {
+  display: none;
+}

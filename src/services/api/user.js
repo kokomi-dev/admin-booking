@@ -1,3 +1,5 @@
+import axiosClient from '@/configs/axiosClient';
+
 const api_url = 'http://localhost:8080/api';
 
 const getAllUser = async (query) => {
@@ -15,4 +17,22 @@ const getAllUser = async (query) => {
     console.log(error);
   }
 };
-export { getAllUser };
+const reqUpdateStatus = async (data) => {
+  try {
+    const res = await fetch(api_url + '/auth/update-status', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      throw new Error(`Lỗi HTTP! status: ${res.status}`);
+    }
+    const response = await res.json();
+    return response;
+  } catch {}
+};
+const reqDelUser = (id) => {
+  return axiosClient.delete(`/user/dell-user/${id}`);
+};
+
+export { getAllUser, reqUpdateStatus, reqDelUser };

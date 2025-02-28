@@ -426,7 +426,7 @@ const HotelListRoomView = ({
                               },
                             });
                           }}
-                          className="text-yellow_main"
+                          className="text-purple-700"
                           tooltip="Dừng HĐ"
                         >
                           <MdLockOutline />

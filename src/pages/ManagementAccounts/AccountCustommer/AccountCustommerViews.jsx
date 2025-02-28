@@ -1,18 +1,34 @@
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
 import Icon from '@/components/Icon/Icon';
 import InputDebounce from '@/components/InputDebounce/InputDebounce';
-import checkInvalidateDDMMYYYY from '@/utils/checkInvalidate';
+import ModalConfirmDelete from '@/components/ModalConfirmDelete/ModalConfirmDelete';
 import { useQueryClient } from '@tanstack/react-query';
-import { Button, Space, Table, Tooltip, Typography } from 'antd';
-import React from 'react';
-import { MdOutlineFilterAltOff } from 'react-icons/md';
+import { Button, Select, Tooltip, Typography } from 'antd';
+import clsx from 'clsx';
+import { useState } from 'react';
+import {
+  MdDelete,
+  MdLockOpen,
+  MdLockOutline,
+  MdOutlineFilterAltOff,
+} from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
-const AccountCustommerViews = ({ listAccountCustommer }) => {
+const AccountCustommerViews = ({
+  filter,
+  setFilter,
+  listAccountCustommer,
+  handleUpdateStatus,
+  handleDelAccount,
+}) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-
+  const { Option } = Select;
+  const [openDel, setOpenDel] = useState({
+    status: false,
+    id: '',
+    name: '',
+  });
   return (
     <div className="text-start text-[0.9rem] flex flex-col  gap-y-4">
       <Breadcrumb pageName="Tài khoản người dùng" />
@@ -62,7 +78,7 @@ const AccountCustommerViews = ({ listAccountCustommer }) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[180px] relative">
                 Tên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -83,28 +99,15 @@ const AccountCustommerViews = ({ listAccountCustommer }) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[40px] relative">
-                Trạng thái
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </th>
               <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
                 Tình trạng
+                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
+                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
+                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
+                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
+              </th>
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+                Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -140,62 +143,100 @@ const AccountCustommerViews = ({ listAccountCustommer }) => {
               </td>
 
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
+                <InputDebounce
+                  className="no-spinner"
+                  type="text"
+                  placeholder="Nhập tên"
+                  value={filter.name}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      name: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <InputDebounce
+                  className="no-spinner"
+                  type="number"
+                  value={filter.numberPhone}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      numberPhone: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <InputDebounce
+                  className="no-spinner"
+                  type="text"
+                  value={filter.email}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      email: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <Select
+                  size="small"
+                  className="no-spinner w-[95px]"
+                  value={filter.isNewbie}
+                  onChange={(value) => {
+                    setFilter((pre) => ({ ...pre, isNewbie: value }));
+                  }}
+                >
+                  <Option value="">Tất cả</Option>
+                  <Option value={false}>Không</Option>
+                  <Option value={true}>Người mới</Option>
+                </Select>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <Select
+                  size="small"
+                  className="no-spinner w-[95px]"
+                  value={filter.isActive}
+                  onChange={(value) => {
+                    setFilter((pre) => ({ ...pre, isActive: value }));
+                  }}
+                >
+                  <Option value="">Tất cả</Option>
+                  <Option value={false}>Chặn HĐ</Option>
+                  <Option value={true}>Hoạt động</Option>
+                </Select>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </td>
-              <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="number" />
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </td>
-              <td className="text-xs z-[5] bg-white border border-l-0 border-t-0  border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="number" />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -207,10 +248,7 @@ const AccountCustommerViews = ({ listAccountCustommer }) => {
                 return (
                   <tr
                     key={i}
-                    className={clsx(
-                      'text-black transition-all duration-150',
-                      !checkInvalidateDDMMYYYY(e.startDate) && 'bg-gray-200',
-                    )}
+                    className={clsx('text-black transition-all duration-150')}
                   >
                     <td className="z-[10] text-xs border  text-center font-normal border-gray-300  border-l-1 border-t-0 p-2  w-[40px] relative">
                       <input type="checkbox" />
@@ -227,63 +265,90 @@ const AccountCustommerViews = ({ listAccountCustommer }) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
 
-                    <td className="z-[10] text-xs text-center border  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                      {e.infoUnit.unitName}
+                    <td className="z-[10] text-xs text-start text-black font-semibold border capitalize border-gray-300 border-l-0 border-t-0 p-2 relative">
+                      {e.firstname + ' ' + e.lastname}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-xs text-center border  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10] text-xs text-center border  font-normal border-gray-300 border-l-0 border-t-0 p-2 relative">
                       {e.numberPhone}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-xs border  text-center  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                      {e.infoUnit.unitAddress}
+                    <td className="z-[10] text-xs border  text-start  font-medium underline border-gray-300 border-l-0 border-t-0 p-2 relative">
+                      {e.email}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] font-semibold text-xs border text-start border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                      {e.infoUnit.unitCode}
+                    <td className="z-[10] font-semibold text-center text-xs border  border-gray-300 border-l-0 border-t-0 p-2 relative">
+                      {e.isNewbie === true ? <span>Người mới</span> : <></>}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-xs text-start font-semibold  border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                      {e.unitTaxcode}
+                    <td className="z-[10] text-xs text-center font-medium  border   border-gray-300 border-l-0 border-t-0 p-2 relative">
+                      {e.isActive === true ? (
+                        <span className="text-green_main">Hoạt động</span>
+                      ) : (
+                        <span className="text-red-500">Chặn HĐ</span>
+                      )}
+
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-xs border  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[120px] relative">
-                      {e.isActive}
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-                    </td>
-                    <td className="z-[10] text-xs border text-center font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[40px] relative">
-                      {e.isActiveUnit}
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-                    </td>
-                    <td className="z-[10] text-xs border text-center  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                      {e.lastname + ' ' + e.firstname}
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-                    </td>
-                    <td className="z-[10] text-xs border  text-center font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+
+                    <td className="z-[10] text-xs border  text-center font-normal border-gray-300 border-l-0 border-t-0 p-2 relative">
+                      <div className="flex items-center justify-center gap-x-1">
+                        {e.isActive === true ? (
+                          <Icon
+                            onClick={() => {
+                              handleUpdateStatus({
+                                id: e._id,
+                                data: { isActive: false },
+                              });
+                            }}
+                            tooltip="Chặn HĐ"
+                            className=" text-purple-700"
+                          >
+                            <MdLockOutline />
+                          </Icon>
+                        ) : (
+                          <Icon
+                            onClick={() => {
+                              handleUpdateStatus({
+                                id: e._id,
+                                data: { isActive: true },
+                              });
+                            }}
+                            className="text-blue_main"
+                            tooltip="Hoạt động"
+                          >
+                            <MdLockOpen />
+                          </Icon>
+                        )}{' '}
+                        <Icon
+                          onClick={() => {
+                            setOpenDel({
+                              status: true,
+                              id: e._id,
+                              name: e.firstname + ' ' + e.lastname,
+                            });
+                          }}
+                          className=" text-red-500"
+                          tooltip="Xóa"
+                        >
+                          <MdDelete />
+                        </Icon>
+                      </div>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -303,6 +368,27 @@ const AccountCustommerViews = ({ listAccountCustommer }) => {
           </tbody>
         </table>
       </div>
+      <ModalConfirmDelete
+        onOK={() => {
+          handleDelAccount(openDel.id);
+          setOpenDel({
+            status: false,
+            name: '',
+            id: '',
+          });
+        }}
+        open={openDel.status}
+        setOpen={() => {
+          setOpenDel({
+            status: false,
+            name: '',
+            id: '',
+          });
+        }}
+        text={`xóa tk người dùng - ${openDel.name}`}
+        okText="Xóa tài khoản"
+        cancelText="Hủy"
+      />
     </div>
   );
 };

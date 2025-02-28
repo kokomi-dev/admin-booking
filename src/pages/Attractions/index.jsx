@@ -9,6 +9,7 @@ import {
   updateStatus,
 } from '@/services/api/attraction';
 import AttractionViews from './AttractionViews';
+import formatDateToISOString from '@/utils/formatDateToISO';
 
 const AttractionsPage = () => {
   const { data: listAttractions, isLoading } = useQuery({
@@ -99,7 +100,10 @@ const AttractionsPage = () => {
       MessNotify.warning('Vui lòng chọn ngày');
     } else {
       mutationUpdateStatus.mutate(
-        { data: { startDate: dateSetAgain }, id: openDatePicker.id },
+        {
+          data: { startDate: formatDateToISOString(dateSetAgain) },
+          id: openDatePicker.id,
+        },
         {
           onSuccess: async (data) => {
             if (data.code === 200) {
@@ -121,8 +125,8 @@ const AttractionsPage = () => {
       {
         data: {
           numberOfTickets: {
-            adult: String(numberTicketsAgain.adult),
-            children: String(numberTicketsAgain.children),
+            adult: Number(numberTicketsAgain.adult),
+            children: Number(numberTicketsAgain.children),
           },
         },
         id: openUpdateTickets.id,

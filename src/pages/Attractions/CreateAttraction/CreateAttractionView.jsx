@@ -178,9 +178,9 @@ const CreateAttractionView = (props) => {
         </Form.Item>
         <Form.Item name="difficulty" label="Độ khó">
           <Select>
-            <Select.Option value="easy">Dễ</Select.Option>
-            <Select.Option value="medium">Trung bình</Select.Option>
-            <Select.Option value="difficult">Khó</Select.Option>
+            <Select.Option value={1}>Dễ</Select.Option>
+            <Select.Option value={2}>Trung bình</Select.Option>
+            <Select.Option value={3}>Khó</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item label="Địa chỉ" name="location">
