@@ -37,9 +37,9 @@ const SignIn = () => {
               ...userData,
             }),
           );
-          localStorage.setItem('accessToken', res.data.accessToken);
-          Cookies.set('refreshToken', res.data.refreshToken);
-          Cookies.set('userId', userData._id);
+          localStorage.setItem('accessTokenAdmin', res.data.accessToken);
+          Cookies.set('refreshTokenAdmin', res.data.refreshToken);
+          Cookies.set('userIdAdmin', userData._id);
 
           MessNotify.success('Đăng nhập thành công');
           navigate('/');

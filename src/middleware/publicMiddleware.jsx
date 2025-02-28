@@ -4,8 +4,8 @@ import { tokenIsExpired } from '../utils';
 import { useLocation } from 'react-router-dom';
 import { reqCurrentUser } from '../services/api/auth';
 export default function PublicMiddleware() {
-  const userId = Cookies.get('userId');
-  const refreshToken = Cookies.get('refreshToken');
+  const userId = Cookies.get('userIdAdmin');
+  const refreshToken = Cookies.get('refreshTokenAdmin');
   const { pathname } = useLocation();
 
   if (pathname.includes('auth') && userId && !tokenIsExpired(refreshToken)) {

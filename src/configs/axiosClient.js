@@ -9,7 +9,7 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessTokenAdmin');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -28,20 +28,20 @@ axiosClient.interceptors.response.use(
     const originalReq = error.config;
     if (error.response?.status === 401 && !originalReq._retry) {
       originalReq._retry = true;
-      const refreshToken = Cookies.get('refreshToken');
+      const refreshToken = Cookies.get('refreshTokenAdmin');
       if (!refreshToken) return Promise.reject(error);
       try {
         const res = await axiosClient.post('/auth/refresh-token', {
           refreshToken: refreshToken,
         });
-        Cookies.set('accessToken', res.data.accessToken);
+        Cookies.set('accessTokenAdmin', res.data.accessToken);
         originalReq.headers.Authorization = `Bearer ${res.data.accessToken}`;
         return axiosClient(originalReq);
       } catch (error) {
-        Cookies.remove('accessToken');
-        Cookies.remove('refreshToken');
-        Cookies.remove('userId');
-        localStorage.removeItem('accessToken');
+        Cookies.remove('accessTokenAdmin');
+        Cookies.remove('refreshTokenAdmin');
+        Cookies.remove('userIdAdmin');
+        localStorage.removeItem('accessTokenAdmin');
         window.location.href = '/login';
 
         return Promise.reject(error);

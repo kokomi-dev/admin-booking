@@ -1,3 +1,10 @@
+import MessNotify from '@/components/MessNotify/MessNotify';
+import ModalConfirmDelete from '@/components/ModalConfirmDelete/ModalConfirmDelete';
+import ModalEditListRoomView from '@/components/ModalEditListRoomView/ModalEditListRoomView';
+import { QUERY_KEY_HOTEL } from '@/configs/QuerykeyStore';
+import { deleteHotel } from '@/services/api/hotel';
+import { formatDate } from '@/utils/formatDate';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Select, Tooltip, Typography } from 'antd';
 import clsx from 'clsx';
 import { Fragment, useState } from 'react';
@@ -17,12 +24,6 @@ import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import Icon from '../../components/Icon/Icon';
 import InputDebounce from '../../components/InputDebounce/InputDebounce';
 import HotelListRoomView from './HotelListRomView';
-import ModalEditListRoomView from '@/components/ModalEditListRoomView/ModalEditListRoomView';
-import ModalConfirmDelete from '@/components/ModalConfirmDelete/ModalConfirmDelete';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteHotel } from '@/services/api/hotel';
-import MessNotify from '@/components/MessNotify/MessNotify';
-import { QUERY_KEY_HOTEL } from '@/configs/QuerykeyStore';
 
 const HotelsViews = (props) => {
   const {
@@ -429,7 +430,7 @@ const HotelsViews = (props) => {
                         <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                       </td>
                       <td className="z-[10] text-xs border text-center  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
-                        {e.createdAt}
+                        {formatDate(e.createdAt)}
                         <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                         <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                         <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -513,7 +514,7 @@ const HotelsViews = (props) => {
                               Nổi bật
                             </span>
                           ) : (
-                            <span className="text-yellow_main font-medium">
+                            <span className="text-purple-700 font-medium">
                               Thường
                             </span>
                           )}
@@ -529,7 +530,7 @@ const HotelsViews = (props) => {
                             Hoạt động
                           </span>
                         ) : (
-                          <span className="text-yellow_main font-medium">
+                          <span className="text-red-500 font-medium">
                             K hoạt động
                           </span>
                         )}
@@ -551,7 +552,7 @@ const HotelsViews = (props) => {
                           </Icon>
                           {e.isActive === true ? (
                             <Icon
-                              className="w-fit text-yellow_main"
+                              className="w-fit text-purple-700"
                               onClick={() => {
                                 handleUpdateStatus({
                                   data: { isActive: false },
@@ -600,11 +601,23 @@ const HotelsViews = (props) => {
                             <Icon
                               tooltip="Bỏ nổi bật"
                               className="text-purple-500 font-medium"
+                              onClick={() => {
+                                handleUpdateStatus({
+                                  data: { isFavorite: false },
+                                  id: e._id,
+                                });
+                              }}
                             >
                               <MdBlockFlipped />
                             </Icon>
                           ) : (
                             <Icon
+                              onClick={() => {
+                                handleUpdateStatus({
+                                  data: { isFavorite: true },
+                                  id: e._id,
+                                });
+                              }}
                               tooltip="Nổi bật"
                               className="text-green_main font-medium"
                             >

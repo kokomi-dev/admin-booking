@@ -1,6 +1,7 @@
 import Icon from '@/components/Icon/Icon';
 import InputDebounce from '@/components/InputDebounce/InputDebounce';
 import { ModalViewBlog } from '@/components/ModalViewBlog/ModalViewBlog';
+import { formatDate } from '@/utils/formatDate';
 import { Button, Checkbox, Select, Tooltip } from 'antd';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -31,7 +32,6 @@ const ListBlogViews = ({
     content: '',
     title: '',
   });
-
   return (
     <div className="w-full overflow-auto rounded-md text-black_main ">
       <table className="table text-xs font-medium min-w-max w-full h-auto overflow-auto  border-spacing-0">
@@ -64,7 +64,7 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  max-w-[120px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  max-w-[300px] relative">
               Nội dung
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -415,7 +415,7 @@ const ListBlogViews = ({
                   <td className="z-[10]  border  text-center   border-gray-300 border-l-0 border-t-0 p-2  relative">
                     <p
                       dangerouslySetInnerHTML={{ __html: e.content }}
-                      className="truncate"
+                      className="truncate line-clamp-3 overflow-hidden show-content-blog max-w-[300px]"
                     ></p>
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -469,7 +469,7 @@ const ListBlogViews = ({
                     <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                   </td>
                   <td className="z-[10]  border text-center  border-gray-300 border-l-0 border-t-0 p-2  w-[40px] relative">
-                    {e.createdAt}
+                    {formatDate(e.createdAt)}
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                     <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -479,7 +479,7 @@ const ListBlogViews = ({
                     {e.isTrending === true ? (
                       <span className="text-blue_main_sub">Nổi bật</span>
                     ) : (
-                      <span className="text-yellow_main">Thường</span>
+                      <span className="text-purple-700">Thường</span>
                     )}
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -509,7 +509,7 @@ const ListBlogViews = ({
                           }}
                           tooltip="Sửa"
                         >
-                          <MdEdit className="text-yellow_main" />
+                          <MdEdit className="text-purple-700" />
                         </Icon>
                         <Icon
                           onClick={() => {

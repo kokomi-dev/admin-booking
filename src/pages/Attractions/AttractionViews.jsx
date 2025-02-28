@@ -14,12 +14,13 @@ import {
   MdOutlineQuestionMark,
 } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import DatePickerVI from '../../components/DatePickerVI/DatePickerVI';
-import Icon from '../../components/Icon/Icon';
-import InputDebounce from '../../components/InputDebounce/InputDebounce';
-import checkInvalidateDDMMYYYY from '../../utils/checkInvalidate';
+import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
+import DatePickerVI from '@/components/DatePickerVI/DatePickerVI';
+import Icon from '@/components/Icon/Icon';
+import InputDebounce from '@/components/InputDebounce/InputDebounce';
+import checkInvalidateDDMMYYYY from '@/utils/checkInvalidate';
 import { listWarningAttraction } from './constant';
+import { formatDate } from '@/utils/formatDate';
 
 const AttractionViews = (props) => {
   const {
@@ -122,19 +123,20 @@ const AttractionViews = (props) => {
           <thead className="text-black">
             <tr>
               <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+                STT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[120px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[150px] relative">
                 Tên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[140px] relative">
                 Địa chỉ
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -614,14 +616,14 @@ const AttractionViews = (props) => {
                       <span
                         className={clsx(
                           'text-center block',
-                          !checkInvalidateDDMMYYYY(e.startDate)
+                          !checkInvalidateDDMMYYYY(formatDate(e.startDate))
                             ? 'text-red-600'
-                            : 'text-green-600',
+                            : 'text-black_main',
                         )}
                       >
-                        {e.startDate}
+                        {formatDate(e.startDate)}
                       </span>
-                      {!checkInvalidateDDMMYYYY(e.startDate) && (
+                      {!checkInvalidateDDMMYYYY(formatDate(e.startDate)) && (
                         <Fragment>
                           <Button
                             onClick={() => {
@@ -660,7 +662,7 @@ const AttractionViews = (props) => {
                             <br />
                             <div className="flex items-center justify-start gap-x-2">
                               <span className="text-red-500 line-through font-semibold">
-                                {e.startDate}
+                                {formatDate(e.startDate)}
                               </span>
                               <DatePickerVI
                                 onDateChange={(date, dateString) => {
@@ -705,9 +707,9 @@ const AttractionViews = (props) => {
                     </td>{' '}
                     <td className="z-[10] text-xs border text-center font-medium border-gray-300 border-l-0 border-t-0 p-2  w-[40px] relative">
                       {e.cancelFree === true ? (
-                        <span className="text-green_main">Có</span>
+                        <span className="">Có</span>
                       ) : (
-                        <span className="text-yellow_main">Không</span>
+                        <span className="">Không</span>
                       )}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -760,7 +762,7 @@ const AttractionViews = (props) => {
                         </Icon>
                         {e.isActive === true ? (
                           <Icon
-                            className="w-fit text-yellow_main"
+                            className="w-fit text-purple-700"
                             onClick={() => {
                               handleUpdateStatus({
                                 data: { isActive: false },

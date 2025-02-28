@@ -19,19 +19,5 @@ const reqlogin = async (data) => {
 const reqCurrentUser = async (userId) => {
   return axiosClient.post('/auth/get-current-user', { userId });
 };
-const reqUpdateStatus = async (data) => {
-  try {
-    const res = await fetch(api_url + '/auth/update-status', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (!res.ok) {
-      throw new Error(`Lỗi HTTP! status: ${res.status}`);
-    }
-    const response = await res.json();
-    return response;
-  } catch {}
-};
 
-export { reqlogin, reqCurrentUser, reqRegister, reqUpdateStatus };
+export { reqlogin, reqCurrentUser, reqRegister };

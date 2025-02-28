@@ -77,7 +77,7 @@ const HotelsPage = () => {
 
     return [];
   }, [listHotel, filterHotel]);
-  if (isLoading) {
+  if (isLoading || mutationUpdateStatus.isPending) {
     return <Loader />;
   }
   const handleUpdateStatus = ({ data, id }) => {

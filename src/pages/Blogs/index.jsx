@@ -1,11 +1,11 @@
 import Loader from '@/common/Loader';
+import MessNotify from '@/components/MessNotify/MessNotify';
 import { QUERY_KEY_BLOG } from '@/configs/QuerykeyStore';
 import { deleteBlogs, editBlog, getAllBlog } from '@/services/api/blog';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import BlogView from './BlogViews';
-import MessNotify from '@/components/MessNotify/MessNotify';
-import { useMemo, useState } from 'react';
 
 const BlogPage = () => {
   const user = useSelector((state) => state.auth.user);
@@ -20,10 +20,10 @@ const BlogPage = () => {
     tags: '',
     createdAt: '',
     updatedAt: '',
-    isTrending: null,
-    isDraft: null,
-    isActive: null,
-    isApprove: null,
+    isTrending: '',
+    isDraft: '',
+    isActive: '',
+    isApprove: '',
     likes: 0,
     comments: [],
   });
@@ -86,12 +86,7 @@ const BlogPage = () => {
         return Object.keys(filterListBlog).every((key) => {
           const filterValue = filterListBlog[key];
           const itemValue = item[key];
-          if (
-            filterValue === null ||
-            filterValue === undefined ||
-            filterValue === ''
-          )
-            return true;
+          if (filterValue === '' || filterValue === 0) return true;
           if (typeof filterValue === 'boolean') {
             return filterValue === Boolean(itemValue);
           }
@@ -105,7 +100,6 @@ const BlogPage = () => {
 
     return [];
   }, [listBlogs, filterListBlog]);
-
   if (
     isLoading ||
     mutationUpdateBlog.isPending ||

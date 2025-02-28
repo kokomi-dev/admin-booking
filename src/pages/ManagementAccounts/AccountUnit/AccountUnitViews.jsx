@@ -1,8 +1,10 @@
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
 import Icon from '@/components/Icon/Icon';
 import InputDebounce from '@/components/InputDebounce/InputDebounce';
-import { Button, Tooltip, Typography } from 'antd';
+import ModalConfirmDelete from '@/components/ModalConfirmDelete/ModalConfirmDelete';
+import { Button, Select, Tooltip, Typography } from 'antd';
 import clsx from 'clsx';
+import { useState } from 'react';
 import {
   MdAutoFixNormal,
   MdBlockFlipped,
@@ -13,14 +15,26 @@ import {
 } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
-const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
+const AccountUnitViews = ({
+  filter,
+  setFilter,
+  listAccountPartner,
+  handleUpdateStatus,
+  handleDelAccount,
+}) => {
   const navigate = useNavigate();
+  const [openDel, setOpenDel] = useState({
+    status: false,
+    id: '',
+    name: '',
+  });
+  const { Option } = Select;
   return (
     <div className="text-start flex flex-col t gap-y-4">
       <Breadcrumb pageName="Doanh nghiệp đã tham gia" />
 
       <div className="w-full flex items-center justify-between">
-        <Typography.Title level={4}>
+        <Typography.Title level={5}>
           Có tất cả
           <span className="font-semibold text-blue_main">
             {' '}
@@ -45,11 +59,13 @@ const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
         </div>
       </div>
       <div>
-        <h3 className="text-red-500 font-semibold">Lưu ý:</h3>
-        <p className="text-black_main font-medium">
-          Các tài khoản khi không được cấp phép hoạt động, không được duyệt thì
-          vẫn chưa được quyền sử dụng KoKoTravel Dashboard để đăng tải
-        </p>
+        <h3 className="text-red-500 font-semibold">1.Lưu ý:</h3>
+        <ul className="list-disc font-normal text-[0.95rem] pl-4">
+          <li>
+            Các tài khoản khi không được cấp phép hoạt động, không được duyệt
+            thì vẫn chưa được quyền sử dụng KoKoTravel Dashboard để đăng tải
+          </li>
+        </ul>
       </div>
       <div className="w-full overflow-auto rounded-md ">
         <table className="text-[0.9rem] table min-w-max w-full h-auto overflow-auto  border-spacing-0">
@@ -140,7 +156,18 @@ const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
               <td className=" z-[5] bg-white  border border-gray-300 border-l-1 p-2 relative 0 text-center">
                 <Tooltip title={`Xóa bộ lọc`}>
                   <button
-                    onClick={() => {}}
+                    onClick={() => {
+                      setFilter({
+                        name: '',
+                        numberPhone: '',
+                        address: '',
+                        idCode: '',
+                        taxCode: '',
+                        isAcitve: '',
+                        isUnitActive: '',
+                        nameAdmin: '',
+                      });
+                    }}
                     className="rounded-md transition-all hover:bg-red-50 p-2 text-vs-danger"
                   >
                     <Icon>
@@ -155,64 +182,133 @@ const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
               </td>
 
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
-
+                <InputDebounce
+                  className="no-spinner"
+                  type="text"
+                  value={filter.name}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      name: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <InputDebounce
+                  className="no-spinner"
+                  type="number"
+                  value={filter.numberPhone}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      numberPhone: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <InputDebounce
+                  className="no-spinner"
+                  type="text"
+                  value={filter.address}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      address: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <InputDebounce
+                  className="no-spinner"
+                  type="text"
+                  value={filter.idCode}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      idCode: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <InputDebounce
+                  className="no-spinner"
+                  type="text"
+                  value={filter.taxCode}
+                  onChange={(e) => {
+                    setFilter((pre) => ({
+                      ...pre,
+                      taxCode: e.target.value,
+                    }));
+                  }}
+                />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="text" />
+                <Select
+                  size="small"
+                  className="no-spinner w-[95px]"
+                  value={filter.isActive}
+                  onChange={(value) => {
+                    setFilter((pre) => ({ ...pre, isActive: value }));
+                  }}
+                >
+                  <Option value="">Tất cả</Option>
+                  <Option value={false}>OFF</Option>
+                  <Option value={true}>ON</Option>
+                </Select>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="number" />
+                <Select
+                  size="small"
+                  className="no-spinner w-[95px]"
+                  value={filter.isUnitActive}
+                  onChange={(value) => {
+                    setFilter((pre) => ({ ...pre, isUnitActive: value }));
+                  }}
+                >
+                  <Option value="">Tất cả</Option>
+                  <Option value={false}>Chưa duyệt</Option>
+                  <Option value={true}>Duyệt</Option>
+                </Select>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0  border-gray-300 p-2 relative  text-center">
-                <InputDebounce className="no-spinner" type="number" />
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -316,7 +412,7 @@ const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
                               });
                             }}
                             tooltip="Dừng HĐ"
-                            className=" text-yellow_main"
+                            className=" text-purple-700"
                           >
                             <MdLockOutline />
                           </Icon>
@@ -361,7 +457,17 @@ const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
                             <MdAutoFixNormal />
                           </Icon>
                         )}
-                        <Icon className=" text-red-500" tooltip="Xóa">
+                        <Icon
+                          onClick={() =>
+                            setOpenDel({
+                              status: true,
+                              id: e._id,
+                              name: e.infoUnit.unitName,
+                            })
+                          }
+                          className=" text-red-500"
+                          tooltip="Xóa"
+                        >
                           <MdDelete />
                         </Icon>
                       </div>
@@ -384,6 +490,27 @@ const AccountUnitViews = ({ listAccountPartner, handleUpdateStatus }) => {
           </tbody>
         </table>
       </div>
+      <ModalConfirmDelete
+        onOK={() => {
+          handleDelAccount(openDel.id);
+          setOpenDel({
+            status: false,
+            name: '',
+            id: '',
+          });
+        }}
+        open={openDel.status}
+        setOpen={() => {
+          setOpenDel({
+            status: false,
+            name: '',
+            id: '',
+          });
+        }}
+        text={`xóa tk doanh nghiệp - ${openDel.name}`}
+        okText="Xóa doanh nghiệp"
+        cancelText="Hủy"
+      />
     </div>
   );
 };
