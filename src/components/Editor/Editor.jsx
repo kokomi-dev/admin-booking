@@ -95,7 +95,7 @@ export default function EditorWrapper({ name, value, setValue }) {
         ref={editorRef}
         theme="snow"
         modules={modules}
-        className="text-black_main text-[16px] h-[40vh]"
+        className="text-black text-[16px] h-[40vh]"
         value={value}
         onChange={(content) => setValue(content)}
         style={{

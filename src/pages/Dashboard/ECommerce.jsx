@@ -3,6 +3,7 @@ import ECommerceViews from './ECommerceView';
 import { useQueries } from '@tanstack/react-query';
 import {
   QUERY_KEY_ATTRACTION,
+  QUERY_KEY_BOOKING,
   QUERY_KEY_HOTEL,
   QUERY_KEY_USER,
 } from '../../configs/QuerykeyStore';
@@ -13,6 +14,7 @@ import { useSelector } from 'react-redux';
 import Loader from '../../common/Loader';
 import checkPermissionUser from '../../utils/checkPermissionUser';
 import { checkReqUserSucess } from '../../utils';
+import { getBookingAttraction } from '@/services/api/booking';
 
 const ECommerce = () => {
   const user = useSelector((state) => state.auth.user);
@@ -21,12 +23,13 @@ const ECommerce = () => {
       {
         queryKey: [QUERY_KEY_ATTRACTION.GET_ALL],
         queryFn: async () => {
-          const data = await getAllAttractions({
+          const res = await getAllAttractions({
             roles: user.roles,
-            idCode: user.idCode,
+            unitCode: user.idCode,
           });
-          if (data && data.data.length > 0) {
-            return data.data;
+          if (res && res.status === 200) {
+            console.log(res);
+            return res.data.data;
           }
         },
         retry: 3,
@@ -81,6 +84,27 @@ const ECommerce = () => {
         retry: 3,
         retryDelay: 1000,
         enabled: user.roles === 'admin',
+      },
+    ],
+  });
+  const [bookedAttractionQuery, bookedHotelQuery] = useQueries({
+    queries: [
+      {
+        queryKey: [QUERY_KEY_BOOKING.GET_ALL_ATTRACTION],
+        queryFn: async () => {
+          const res = await getBookingAttraction({
+            roles: user.roles,
+            unitCode: user.idCode,
+          });
+          if (res && res.data.data.length > 0) {
+            return res.data.data;
+          } else {
+            return [];
+          }
+        },
+        enabled: !!user && !!user.roles,
+        retry: 3,
+        retryDelay: 1000,
       },
     ],
   });

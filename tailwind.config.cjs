@@ -76,6 +76,10 @@ module.exports = {
         black_sub_2: '#595959',
         error_color: '#DB0200',
       },
+      backgroundColor: {
+        blue_main: '#003B96',
+        blue_main_sub: '#006CE4',
+      },
       fontSize: {
         'title-xxl': ['44px', '55px'],
         'title-xl': ['36px', '45px'],

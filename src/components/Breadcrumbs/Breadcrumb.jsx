@@ -19,7 +19,7 @@ const Breadcrumb = ({ pageName, backPage, backPageLink }) => {
             </li>
           )}
 
-          <li className=" text-blue_main_sub">{pageName}</li>
+          <li className=" text-blue_sub">{pageName}</li>
         </ol>
       </nav>
     </div>

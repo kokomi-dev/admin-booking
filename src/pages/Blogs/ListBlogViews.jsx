@@ -1,5 +1,6 @@
 import Icon from '@/components/Icon/Icon';
 import InputDebounce from '@/components/InputDebounce/InputDebounce';
+import ModalConfirmDelete from '@/components/ModalConfirmDelete/ModalConfirmDelete';
 import { ModalViewBlog } from '@/components/ModalViewBlog/ModalViewBlog';
 import { formatDate } from '@/utils/formatDate';
 import { Button, Checkbox, Select, Tooltip } from 'antd';
@@ -32,31 +33,35 @@ const ListBlogViews = ({
     content: '',
     title: '',
   });
+  const [openDel, setOpenDel] = useState({
+    status: false,
+    id: '',
+  });
   return (
-    <div className="w-full overflow-auto rounded-md text-black_main ">
+    <div className="w-full overflow-auto rounded-md text-black ">
       <table className="table text-xs font-medium min-w-max w-full h-auto overflow-auto  border-spacing-0">
         <thead className="text-black">
           <tr className=" text-xs">
-            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+            <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Tiêu đề
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Tác giả
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -64,14 +69,14 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  max-w-[300px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  max-w-[300px] relative">
               Nội dung
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Mã DN
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -79,35 +84,35 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Chế độ
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Trạng thái
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Thể loại
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2   relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2   relative">
               Ngày tạo
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Tiêu chí
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -115,7 +120,7 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
 
-            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+            <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
               Tùy chọn
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
               <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -123,7 +128,7 @@ const ListBlogViews = ({
               <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
             </th>
             {user.roles === 'admin' && (
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Nâng cao
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -366,7 +371,7 @@ const ListBlogViews = ({
                 <tr
                   key={i}
                   className={clsx(
-                    'text-black_main text-[0.8rem] font-normal transition-all duration-150 text-xs',
+                    'text-black text-[0.8rem] font-normal transition-all duration-150 text-xs',
                   )}
                 >
                   <td className="z-[10]  border  text-center  border-gray-300  border-l-1 border-t-0 p-2  w-[40px] relative">
@@ -398,7 +403,7 @@ const ListBlogViews = ({
                     <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                   </td>
 
-                  <td className="z-[10] capitalize text-center border border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                  <td className="z-[10] capitalize text-center border border-gray-300 border-l-0 border-t-0 p-2  w-[200px] relative">
                     {e.title}
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                     <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -477,7 +482,7 @@ const ListBlogViews = ({
                   </td>
                   <td className="z-[10]  border text-center font-medium  border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                     {e.isTrending === true ? (
-                      <span className="text-blue_main_sub">Nổi bật</span>
+                      <span className="text-blue_sub">Nổi bật</span>
                     ) : (
                       <span className="text-purple-700">Thường</span>
                     )}
@@ -500,7 +505,7 @@ const ListBlogViews = ({
                           }}
                           tooltip="Xem"
                         >
-                          <MdRemoveRedEye className="text-blue_main_sub" />
+                          <MdRemoveRedEye className="text-blue_sub" />
                         </Icon>
 
                         <Icon
@@ -513,7 +518,7 @@ const ListBlogViews = ({
                         </Icon>
                         <Icon
                           onClick={() => {
-                            handleDelete([e._id]);
+                            setOpenDel({ status: true, id: e._id });
                           }}
                           tooltip="Xóa"
                         >
@@ -534,7 +539,7 @@ const ListBlogViews = ({
                           </Icon>
                         ) : (
                           <Icon
-                            className="w-fit text-green_main"
+                            className="w-fit text-green"
                             onClick={() => {
                               handleUpdateStatus({
                                 value: { isActive: true },
@@ -558,7 +563,7 @@ const ListBlogViews = ({
                       <div className="flex flex-col items-start gap-y-1">
                         {e?.isApprove === false ? (
                           <Button
-                            className="text-green_main text-xs"
+                            className="text-green text-xs"
                             onClick={() => {
                               handleUpdateStatus({
                                 value: { isApprove: true },
@@ -583,7 +588,7 @@ const ListBlogViews = ({
                         )}
                         {e.isTrending === false ? (
                           <Button
-                            className="text-blue_main_sub text-xs
+                            className="text-blue_sub text-xs
                             "
                             onClick={() => {
                               handleUpdateStatus({
@@ -628,6 +633,20 @@ const ListBlogViews = ({
         </tbody>
       </table>
       <ModalViewBlog open={openViewBlog} setOpen={setOpenViewBlog} />
+      <ModalConfirmDelete
+        onOK={() => {
+          handleDelete([openDel.id]);
+        }}
+        open={openDel.status}
+        setOpen={() => {
+          setOpenDel({
+            status: false,
+            id: '',
+          });
+        }}
+        text="xóa bài viết này không ?"
+        okText="Xóa bài viết"
+      />
     </div>
   );
 };

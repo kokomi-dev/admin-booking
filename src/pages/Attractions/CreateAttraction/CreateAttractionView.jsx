@@ -444,7 +444,7 @@ const CreateAttractionView = (props) => {
         </Form.Item>
         <Button
           type="primary"
-          className="w-full h-auto py-2 bg-blue_main_sub"
+          className="w-full h-auto py-2 bg-blue_main_main_sub"
           htmlType="submit"
         >
           Tạo mới

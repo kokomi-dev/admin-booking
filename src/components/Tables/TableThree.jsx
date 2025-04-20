@@ -66,8 +66,8 @@ const TableThree = () => {
                       packageItem.status === 'Paid'
                         ? 'bg-success text-success'
                         : packageItem.status === 'Unpaid'
-                        ? 'bg-danger text-danger'
-                        : 'bg-warning text-warning'
+                          ? 'bg-danger text-danger'
+                          : 'bg-warning text-warning'
                     }`}
                   >
                     {packageItem.status}

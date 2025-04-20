@@ -70,7 +70,7 @@ const HotelsViews = (props) => {
     });
   };
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-4 bg-white p-3 rounded-2xl">
       <Breadcrumb pageName="Lưu trú" />
       <div className="w-full flex items-center justify-between">
         <Typography.Paragraph className="text-[1rem] font-medium">
@@ -95,16 +95,18 @@ const HotelsViews = (props) => {
           </Button>
         </div>
       </div>
-      <p className="w-full text-start flex items-center justify-start text-[1rem] ">
-        <span className="text-red-600 font-medium">1.Lưu ý: </span> Bạn phải đặt
-        lại số phòng nếu số phòng đã hết, số phòng đã hết khách hàng sẽ không
-        thể đặt
+      <p className="w-full text-start flex items-center justify-start text-sm ">
+        <span className="text-red-600 font-medium text-base mr-2">
+          1.Lưu ý:{' '}
+        </span>{' '}
+        Bạn phải đặt lại số phòng nếu số phòng đã hết, số phòng đã hết khách
+        hàng sẽ không thể đặt
       </p>
       <span className="text-red-600 font-medium">
         {' '}
         2.Chỉnh sửa thông tin phòng:{' '}
       </span>{' '}
-      <ul className="pl-4 list-disc text-[0.95rem]">
+      <ul className="pl-4 list-disc text-sm grid gap-2">
         <li>
           Thông tin phòng, chỗ nghỉ của mỗi nơi lưu trú có thể cập nhật lại
           thông tin trong phần mở rộng của phòng. Nếu có thắc mắc về sử dụng hãy
@@ -120,7 +122,7 @@ const HotelsViews = (props) => {
         <div className="grid grid-cols-[15%,2%,80%] gap-x-1">
           <div className="bg-red-200 w-[100px] h-[30px]"></div>
           <span className="text-center">-</span>
-          <p className="text-[0.95rem]">
+          <p className="text-sm">
             Đã hết phòng trống, vui lòng bổ sung thêm nếu có phòng trống
           </p>
         </div>
@@ -129,34 +131,34 @@ const HotelsViews = (props) => {
         <table className="table min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr>
-              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[200px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[200px] relative">
                 Tên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[200px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[200px] relative">
                 Địa chỉ
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ảnh
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ngày tạo
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -164,35 +166,35 @@ const HotelsViews = (props) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[80px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[80px] relative">
                 Đánh giá
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[80px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[80px] relative">
                 Loại phòng hiện có
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Phòng
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[80px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[80px] relative">
                 Hủy miễn phí
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[80px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[80px] relative">
                 Nổi bật
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -200,14 +202,14 @@ const HotelsViews = (props) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] w-auto text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  relative">
+              <th className="z-[10] w-auto text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  relative">
                 Tùy chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -215,7 +217,7 @@ const HotelsViews = (props) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
               {user.roles === 'admin' && (
-                <th className="z-[10] w-auto text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  relative">
+                <th className="z-[10] w-auto text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  relative">
                   Nâng cao
                   <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                   <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -460,7 +462,7 @@ const HotelsViews = (props) => {
                               onClick={() => {
                                 toogleSubItem(i);
                               }}
-                              className="!p-[0.2rem] text-[0.8rem] underline hover:cursor-pointer text-blue_main_sub hover:text-blue_main"
+                              className="!p-[0.2rem] text-[0.8rem] underline hover:cursor-pointer text-blue_sub hover:text-blue"
                             >
                               <MdArrowDropDown
                                 className={clsx(
@@ -482,7 +484,7 @@ const HotelsViews = (props) => {
                             }}
                             tooltip="Thêm phòng"
                           >
-                            <MdAdd className="text-green_main" />
+                            <MdAdd className="text-green" />
                           </Icon>
                         </div>
                         <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
@@ -493,11 +495,9 @@ const HotelsViews = (props) => {
                       <td className="z-[10] text-xs border  text-center font-normal border-gray-300 border-l-0 border-t-0 p-2   relative">
                         <div className="flex flex-col">
                           {e.cancelFree === true ? (
-                            <span className="text-black_main font-medium">
-                              Có
-                            </span>
+                            <span className="text-black font-medium">Có</span>
                           ) : (
-                            <span className="text-black_main font-medium">
+                            <span className="text-black font-medium">
                               Không
                             </span>
                           )}
@@ -510,7 +510,7 @@ const HotelsViews = (props) => {
                       <td className="z-[10] text-xs border  text-center font-normal border-gray-300 border-l-0 border-t-0 p-2   relative">
                         <div className="flex flex-col">
                           {e.isFavorite === true ? (
-                            <span className="text-green_main font-medium">
+                            <span className="text-green font-medium">
                               Nổi bật
                             </span>
                           ) : (
@@ -526,7 +526,7 @@ const HotelsViews = (props) => {
                       </td>
                       <td className="z-[10] text-xs border text-center  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                         {e.isActive === true ? (
-                          <span className="text-green_main font-medium">
+                          <span className="text-green font-medium">
                             Hoạt động
                           </span>
                         ) : (
@@ -545,50 +545,53 @@ const HotelsViews = (props) => {
                             onClick={() => {
                               navigate('/hotels/edit?slug=' + e.slug);
                             }}
-                            className="w-fit text-blue_main_sub"
+                            className="w-fit text-blue_sub"
                             tooltip="Sửa"
                           >
                             <MdModeEdit />
                           </Icon>
                           {e.isActive === true ? (
-                            <Icon
-                              className="w-fit text-purple-700"
+                            <Button
+                              className="w-fit text-purple-700 font-light"
                               onClick={() => {
                                 handleUpdateStatus({
                                   data: { isActive: false },
                                   id: e._id,
                                 });
                               }}
-                              tooltip="Dừng HĐ"
+                              size="small"
                             >
                               <MdLockOutline />
-                            </Icon>
+                              Dừng HĐ
+                            </Button>
                           ) : (
-                            <Icon
-                              className="w-fit text-green_main"
+                            <Button
+                              size="small"
+                              className="w-fit text-green font-light"
                               onClick={() => {
                                 handleUpdateStatus({
                                   data: { isActive: true },
                                   id: e._id,
                                 });
                               }}
-                              tooltip="Hoạt động"
                             >
                               <MdLockOpen />
-                            </Icon>
+                              Hoạt động
+                            </Button>
                           )}
-                          <Icon
+                          <Button
+                            size="small"
                             onClick={() => {
                               setOpenDel({
                                 status: true,
                                 id: e._id,
                               });
                             }}
-                            className="w-fit text-red-500"
-                            tooltip="Xóa"
+                            className="w-fit text-red-500 text-xs font-light"
                           >
                             <MdOutlineDelete />
-                          </Icon>
+                            Xóa
+                          </Button>
                         </div>
                         <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                         <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -598,9 +601,9 @@ const HotelsViews = (props) => {
                       {user.roles === 'admin' && (
                         <td className="z-[10] text-xs border text-center  font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                           {e.isFavorite === true ? (
-                            <Icon
-                              tooltip="Bỏ nổi bật"
-                              className="text-purple-500 font-medium"
+                            <Button
+                              size="small"
+                              className="text-purple-500 font-light text-xs"
                               onClick={() => {
                                 handleUpdateStatus({
                                   data: { isFavorite: false },
@@ -609,20 +612,22 @@ const HotelsViews = (props) => {
                               }}
                             >
                               <MdBlockFlipped />
-                            </Icon>
+                              Bỏ nổi bật
+                            </Button>
                           ) : (
-                            <Icon
+                            <Button
                               onClick={() => {
                                 handleUpdateStatus({
                                   data: { isFavorite: true },
                                   id: e._id,
                                 });
                               }}
-                              tooltip="Nổi bật"
-                              className="text-green_main font-medium"
+                              size="small"
+                              className="text-green font-light text-xs"
                             >
                               <MdAutoFixNormal />
-                            </Icon>
+                              Nổi bật
+                            </Button>
                           )}
                           <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                           <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -639,7 +644,7 @@ const HotelsViews = (props) => {
                               openListRoom === i ? 'max-h-full' : 'max-h-0'
                             }`}
                           >
-                            <h4 className="font-bold text-left p-2 bg-gray-100">
+                            <h4 className="font-bold text-sm text-left p-2 bg-blue_main text-white">
                               Chi tiết phòng hiện có
                             </h4>
                             <HotelListRoomView

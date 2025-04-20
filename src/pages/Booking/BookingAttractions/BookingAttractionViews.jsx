@@ -3,7 +3,7 @@ import Icon from '@/components/Icon/Icon';
 import InputDebounce from '@/components/InputDebounce/InputDebounce';
 import { formatDate } from '@/utils/formatDate';
 import formatVietnamCurrency from '@/utils/formatPrice';
-import { Select, Tooltip, Typography } from 'antd';
+import { Button, Select, Tooltip, Typography } from 'antd';
 import clsx from 'clsx';
 import { MdCheck, MdClear, MdOutlineFilterAltOff } from 'react-icons/md';
 
@@ -12,9 +12,6 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Breadcrumb pageName="Các địa điểm đã đặt" />
-      <Typography.Title level={4}>
-        Danh sách các địa điểm đã đặt
-      </Typography.Title>
       <div className="w-full flex items-center justify-between">
         <Typography.Title level={5}>
           Có tất cả
@@ -22,10 +19,10 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
           đơn đã được đặt
         </Typography.Title>
       </div>
-      <div className="flex flex-col gap-y-2 text-[1rem] ">
+      <div className="flex flex-col gap-y-4  ">
         <div className="flex flex-col gap-y-1">
-          <h3 className="text-red-500 font-semibold">1.Lưu ý:</h3>
-          <ul className="text-[0.95rem]  font-normal list-disc pl-4">
+          <h3 className="text-red-500 font-medium text-base mb-2">1.Lưu ý:</h3>
+          <ul className="text-sm  font-normal list-disc pl-4 grid gap-2">
             <li>
               Nếu có thắc mắc về việc sử dụng hãy liên hệ với quản trị viên để
               được hướng dẫn sử dụng
@@ -37,10 +34,10 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
           </ul>
         </div>
         <div className="flex flex-col gap-y-1">
-          <h3 className="text-red-500 font-semibold">
+          <h3 className="text-red-500 font-medium text-base mb-2">
             2.Quy định về thanh toán:
           </h3>
-          <ul className="text-[0.95rem]  font-normal list-disc pl-4">
+          <ul className="text-sm  font-normal list-disc pl-4 grid gap-2">
             <li>
               <strong>COD:</strong> hãy xem chuyển khoản thành công thì xác nhận
               lại với khách hàng qua email
@@ -56,35 +53,35 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
         <table className="table text-xs font-medium min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr className="text-xs">
-              <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+              <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
                 STT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[150px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[150px] relative">
                 Tên địa điểm
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Thành phố
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Thông tin người đặt
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[150px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[150px] relative">
                 Phương thức thanh toán
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -92,14 +89,14 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  max-w-[140px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  max-w-[140px] relative">
                 Số tiền
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Vé người lớn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -107,35 +104,35 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Vé trẻ em
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ngày bắt đầu
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ngày đặt
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[150px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[150px] relative">
                 Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[150px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[150px] relative">
                 Hành động
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -304,7 +301,7 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
                 <InputDebounce
-                  className="no-spinner"
+                  className="no-spinner font-normal"
                   type="date"
                   width={130}
                   value={filter.dateStart}
@@ -322,7 +319,7 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
               </td>
               <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
                 <InputDebounce
-                  className="no-spinner"
+                  className="no-spinner font-normal"
                   type="date"
                   width={130}
                   value={filter.bookedDate}
@@ -371,7 +368,7 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
                   <tr
                     key={i}
                     className={clsx(
-                      'text-black_main text-[0.8rem] font-normal transition-all duration-150 text-xs',
+                      'text-black text-[0.8rem] font-normal transition-all duration-150 text-xs',
                     )}
                   >
                     <td className="z-[10]  border  text-center  border-gray-300  border-l-1 border-t-0 p-2  w-[40px] relative">
@@ -396,35 +393,35 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10]  font-medium text-center border border-gray-300 border-l-0 border-t-0 p-2   relative">
+                    <td className="z-[10]  font-normal text-center border border-gray-300 border-l-0 border-t-0 p-2   relative">
                       {e.infoUser.email}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10]  text-center border text-green_main font-medium  border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10]  text-center border text-green font-medium  border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       {e.paymentMethod}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10]  border font-medium text-blue_main_sub  text-center   border-gray-300 border-l-0 border-t-0 p-2  relative">
+                    <td className="z-[10]  border font-medium text-blue_sub  text-center   border-gray-300 border-l-0 border-t-0 p-2  relative">
                       {formatVietnamCurrency(e.totalBooked)}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] font-semibold text-center  border  border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10] font-normal text-center  border  border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       {e.numberOfTicketsBooked.adult}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10]  text-center font-medium  border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10]  text-center font-normal  border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       {e.numberOfTicketsBooked.children}
 
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
@@ -452,7 +449,7 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
                       {e.isSuccess === false ? (
                         <span className="text-red-500">Chưa thành công</span>
                       ) : (
-                        <span className="text-green_main">Thành công</span>
+                        <span className="text-green">Thành công</span>
                       )}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -463,12 +460,10 @@ const BookingAttractionViews = ({ listBooking, filter, setFilter }) => {
                       {e.paymentMethod === 'cod' ? (
                         <div className="">
                           {e.isSuccess === false ? (
-                            <Icon
-                              className="text-green_main"
-                              tooltip="Xác nhận"
-                            >
-                              <MdCheck />
-                            </Icon>
+                            <Button className="text-black_sub" size="small">
+                              <MdCheck />{' '}
+                              <span className="text-xs">Xác nhận TT</span>
+                            </Button>
                           ) : (
                             <Icon className="text-red-500" tooltip="Hủy">
                               <MdClear />

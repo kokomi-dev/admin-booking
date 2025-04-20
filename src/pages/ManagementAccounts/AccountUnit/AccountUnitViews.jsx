@@ -30,13 +30,13 @@ const AccountUnitViews = ({
   });
   const { Option } = Select;
   return (
-    <div className="text-start flex flex-col t gap-y-4">
+    <div className="text-start flex flex-col t gap-y-4 bg-white rounded-2xl p-3">
       <Breadcrumb pageName="Doanh nghiệp đã tham gia" />
 
       <div className="w-full flex items-center justify-between">
         <Typography.Title level={5}>
           Có tất cả
-          <span className="font-semibold text-blue_main">
+          <span className="font-semibold text-blue">
             {' '}
             ( {listAccountPartner.length} ){' '}
           </span>
@@ -59,8 +59,8 @@ const AccountUnitViews = ({
         </div>
       </div>
       <div>
-        <h3 className="text-red-500 font-semibold">1.Lưu ý:</h3>
-        <ul className="list-disc font-normal text-[0.95rem] pl-4">
+        <h3 className="text-red-500 font-semibold mb-2">1.Lưu ý:</h3>
+        <ul className="list-disc font-normal text-sm pl-4">
           <li>
             Các tài khoản khi không được cấp phép hoạt động, không được duyệt
             thì vẫn chưa được quyền sử dụng KoKoTravel Dashboard để đăng tải
@@ -71,35 +71,35 @@ const AccountUnitViews = ({
         <table className="text-[0.9rem] table min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr>
-              <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[50px] relative">
+              <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[50px] relative">
                 Chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 STT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Tên DN
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Số ĐT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Địa chỉ
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -107,42 +107,42 @@ const AccountUnitViews = ({
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Mã DN
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Mã thuế
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[40px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[40px] relative">
                 Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Tình trạng
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Quản trị viên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main text-xs p-2  w-[100px] relative">
+              <th className="z-[10]  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main text-xs p-2  w-[100px] relative">
                 Tùy chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -374,7 +374,7 @@ const AccountUnitViews = ({
                     </td>
                     <td className="z-[10]  border text-center font-medium border-gray-300 border-l-0 border-t-0 p-2  w-[120px] relative">
                       {e.isActive === true ? (
-                        <span className="text-green_main">ON</span>
+                        <span className="text-green">ON</span>
                       ) : (
                         <span className="text-red-500">OFF</span>
                       )}
@@ -385,7 +385,7 @@ const AccountUnitViews = ({
                     </td>
                     <td className="z-[10]  border text-center font-medium border-gray-300 border-l-0 border-t-0 p-2  w-[40px] relative">
                       {e.isUnitActive === true ? (
-                        <span className="text-green_main">Duyệt</span>
+                        <span className="text-green">Duyệt</span>
                       ) : (
                         <span className="text-red-500">Chưa duyệt</span>
                       )}
@@ -424,7 +424,7 @@ const AccountUnitViews = ({
                                 data: { isActive: true },
                               });
                             }}
-                            className="text-blue_main"
+                            className="text-blue"
                             tooltip="Hoạt động"
                           >
                             <MdLockOpen />
@@ -451,7 +451,7 @@ const AccountUnitViews = ({
                                 data: { isUnitActive: true },
                               });
                             }}
-                            className="text-green_main"
+                            className="text-green"
                             tooltip="Duyệt"
                           >
                             <MdAutoFixNormal />
