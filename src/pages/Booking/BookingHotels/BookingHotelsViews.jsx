@@ -3,7 +3,7 @@ import Icon from '@/components/Icon/Icon';
 import InputDebounce from '@/components/InputDebounce/InputDebounce';
 import { formatDate } from '@/utils/formatDate';
 import formatVietnamCurrency from '@/utils/formatPrice';
-import { Checkbox, Select, Tooltip, Typography } from 'antd';
+import { Button, Checkbox, Select, Tooltip, Typography } from 'antd';
 import clsx from 'clsx';
 import React from 'react';
 import { MdCheck, MdClear, MdOutlineFilterAltOff } from 'react-icons/md';
@@ -18,9 +18,6 @@ const BookingHotelViews = ({
   return (
     <div className="flex flex-col gap-y-4">
       <Breadcrumb pageName="Nơi lưu trú đã đặt" />
-      <Typography.Title level={4}>
-        Danh sách nơi lưu trú đã đặt
-      </Typography.Title>
       <div className="w-full flex items-center justify-between">
         <Typography.Title level={5}>
           Có tất cả
@@ -28,10 +25,10 @@ const BookingHotelViews = ({
           đơn đã được đặt
         </Typography.Title>
       </div>
-      <div className="flex flex-col gap-y-2 text-[1rem] ">
+      <div className="flex flex-col gap-y-2  ">
         <div className="flex flex-col gap-y-1">
-          <h3 className="text-red-500 font-semibold">1.Lưu ý:</h3>
-          <ul className="text-[0.95rem]  font-normal list-disc pl-4">
+          <h3 className="text-red-500 font-medium text-base mb-2">1.Lưu ý:</h3>
+          <ul className="text-sm grid gap-2  font-normal list-disc pl-4">
             <li>
               Nếu có thắc mắc về việc sử dụng hãy liên hệ với quản trị viên để
               được hướng dẫn sử dụng
@@ -43,10 +40,10 @@ const BookingHotelViews = ({
           </ul>
         </div>
         <div className="flex flex-col gap-y-1">
-          <h3 className="text-red-500 font-semibold">
+          <h3 className="text-red-500 font-medium text-base mb-2">
             2.Quy định về thanh toán:
           </h3>
-          <ul className="text-[0.95rem]  font-normal list-disc pl-4">
+          <ul className="text-sm grid gap-2  font-normal list-disc pl-4">
             <li>
               <strong>COD:</strong> hãy xem chuyển khoản thành công thì xác nhận
               lại với khách hàng qua email
@@ -62,36 +59,42 @@ const BookingHotelViews = ({
         <table className="table text-xs font-medium min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr className="text-xs">
-              <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+              <th className="z-[5]  border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
                 STT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Nơi lưu trú
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Địa điểm
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[250px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[250px] relative">
                 Thông tin phòng
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[120px] relative">
+              <th className="z-[10] font-semibold  border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[250px] relative">
+                Email
+                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
+                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
+                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
+                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
+              </th>
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[120px] relative">
                 Phương thức thanh toán
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -99,14 +102,14 @@ const BookingHotelViews = ({
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  max-w-[140px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  max-w-[140px] relative">
                 Số tiền
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[80px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[80px] relative">
                 Vé người lớn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -114,7 +117,7 @@ const BookingHotelViews = ({
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[80px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[80px] relative">
                 Vé trẻ em
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -122,21 +125,21 @@ const BookingHotelViews = ({
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ngày đặt
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] font-semibold   border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Hành động
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -207,6 +210,12 @@ const BookingHotelViews = ({
                   className="no-spinner"
                   type="text"
                 />
+                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
+                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
+                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
+                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
+              </td>
+              <td className=" z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
@@ -340,7 +349,7 @@ const BookingHotelViews = ({
                   <tr
                     key={i}
                     className={clsx(
-                      'text-black_main text-[0.8rem] font-normal transition-all duration-150 text-xs',
+                      'text-black text-[0.8rem] font-normal transition-all duration-150 text-xs',
                     )}
                   >
                     <td className="z-[10]  border  text-center  border-gray-300  border-l-1 border-t-0 p-2  w-[40px] relative">
@@ -387,14 +396,21 @@ const BookingHotelViews = ({
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] font-medium text-green_main  text-center border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10] font-medium text-black  text-center border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                      {e.infoUser.email}
+                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
+                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
+                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
+                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
+                    </td>
+                    <td className="z-[10] font-medium text-green  text-center border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       {e.paymentMethod}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-blue_main_sub font-medium border  text-center   border-gray-300 border-l-0 border-t-0 p-2  relative">
+                    <td className="z-[10] text-blue_sub font-medium border  text-center   border-gray-300 border-l-0 border-t-0 p-2  relative">
                       {formatVietnamCurrency(e.totalBooked)}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -429,7 +445,7 @@ const BookingHotelViews = ({
                       {e.isSuccess === false ? (
                         <span className="text-red-600">Chưa thành công</span>
                       ) : (
-                        <span className="text-green_main">Thành công</span>
+                        <span className="text-green">Thành công</span>
                       )}
 
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
@@ -437,16 +453,17 @@ const BookingHotelViews = ({
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10]  font-semibold border text-center  border-gray-300 border-l-0 border-t-0 p-2 w-[100px] relative">
+                    <td className="z-[10]  font-semibold border text-center  border-gray-300 border-l-0 border-t-0 p-2 w-[120px] relative">
                       {e.paymentMethod === 'cod' ? (
-                        <div className="">
+                        <div className="flex ">
                           {e.isSuccess === false ? (
-                            <Icon
-                              className="text-green_main"
-                              tooltip="Xác nhận"
+                            <Button
+                              size="small"
+                              className="text-black_sub text-sm"
                             >
-                              <MdCheck />
-                            </Icon>
+                              <MdCheck />{' '}
+                              <span className="text-xs">Xác nhận đã TT</span>
+                            </Button>
                           ) : (
                             <Icon
                               className="text-red-500"

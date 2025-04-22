@@ -23,15 +23,10 @@ function App() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  const theme = {
-    token: {
-      fontFamily: "'Satoshi', sans-serif",
-    },
-  };
   return loading ? (
     <Loader />
   ) : (
-    <ConfigProvider theme={theme}>
+    <ConfigProvider>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <DefaultLayout>

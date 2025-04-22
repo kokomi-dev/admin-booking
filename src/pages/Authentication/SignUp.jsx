@@ -56,7 +56,7 @@ const SignUp = () => {
   }
   return (
     <>
-      <h1 className="uppercase text-[1.6rem] text-center py-4 text-black_main font-bold">
+      <h1 className="uppercase text-[1.6rem] text-center py-4 text-black font-bold">
         quản trị kokotravel
       </h1>
       <div className="max-w-[1100px] mx-auto rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -67,7 +67,7 @@ const SignUp = () => {
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
                 <img className="dark:hidden" src={LogoDark} alt="Logo" />
               </Link>
-              <p className="2xl:px-20">
+              <p className="">
                 Đăng ký tài khoản thể tham gia thành viên doanh nghiệp của
                 KoKoTravel
               </p>
@@ -276,7 +276,7 @@ const SignUp = () => {
                     )}
                   />
                 </Form.Item>
-                <span className="mb-3 text-blue-600">
+                <span className="mb-3 text-blue_sub">
                   Thông tin người quản trị
                 </span>
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-4">
@@ -342,7 +342,7 @@ const SignUp = () => {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="w-full bg-blue-600"
+                    className="w-full bg-blue_main_main_sub"
                   >
                     Đăng ký
                   </Button>
@@ -352,7 +352,7 @@ const SignUp = () => {
                   <span>Bạn đã có tài khoản !</span>{' '}
                   <Link
                     to="/auth/signin"
-                    className="text-blue-600 underline font-medium"
+                    className="text-blue_sub underline font-medium"
                   >
                     Đăng nhập
                   </Link>

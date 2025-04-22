@@ -85,7 +85,7 @@ export default function EditBlogViews({
                 value={content}
                 setValue={setContent}
               />
-              <p className="text-black_main">
+              <p className="text-black">
                 <span className="text-red-600 font-medium text-[1rem]">
                   Lưu ý:
                 </span>{' '}
@@ -95,12 +95,12 @@ export default function EditBlogViews({
                 viết này từ lúc đăng vui lòng liên hệ với:{' '}
                 <a
                   href="mailto:nguyenthean12062002@gmail.com"
-                  className="text-blue_main_sub hover:underline "
+                  className="text-blue_sub hover:underline "
                 >
                   nguyenthean12062002@gmail.com
                 </a>{' '}
                 hoặc hotline:
-                <a href="tel:+0961563714" className="text-blue_main_sub">
+                <a href="tel:+0961563714" className="text-blue_sub">
                   {' '}
                   0912384747
                 </a>
@@ -119,7 +119,7 @@ export default function EditBlogViews({
                   <Button
                     disabled={!isModified}
                     htmlType="submit"
-                    className="bg-bg_primary_blue_sub text-white"
+                    className="bg-blue_main_sub text-white"
                   >
                     Chỉnh sửa bài viết
                   </Button>

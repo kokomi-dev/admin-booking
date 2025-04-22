@@ -1,19 +1,45 @@
-import BlogPage from '@/pages/Blogs';
-import CreateBlog from '@/pages/Blogs/CreateBlog/CreateBlog';
-import EditBlog from '@/pages/Blogs/EditBlog/EditBlog';
-import { BookingAttractions, BookingHotels } from '@/pages/Booking';
-import AccountCustommer from '@/pages/ManagementAccounts/AccountCustommer/AccountCustommer';
-import AccountUnit from '@/pages/ManagementAccounts/AccountUnit/AccountUnit';
+import { lazy } from 'react';
 import { Route } from 'react-router-dom';
 import PageTitle from '../components/PageTitle';
 import AuthMiddleware from '../middleware/authMiddleware';
-import AttractionsPage from '../pages/Attractions';
-import CreateAttraction from '../pages/Attractions/CreateAttraction/CreateAttraction';
-import EditAttraction from '../pages/Attractions/EditAttraction/EditAttraction';
-import ECommerce from '../pages/Dashboard/ECommerce';
-import HotelsPage from '../pages/Hotels';
-import CreateHotel from '../pages/Hotels/CreateHotel/CreateHotel';
-import EditHotel from '../pages/Hotels/EditHotel/EditHotel';
+
+const BlogPage = lazy(() => import('@/pages/Blogs'));
+const CreateBlog = lazy(() => import('@/pages/Blogs/CreateBlog/CreateBlog'));
+const EditBlog = lazy(() => import('@/pages/Blogs/EditBlog/EditBlog'));
+
+const BookingAttractions = lazy(() =>
+  import('@/pages/Booking').then((module) => ({
+    default: module.BookingAttractions,
+  })),
+);
+const BookingHotels = lazy(() =>
+  import('@/pages/Booking').then((module) => ({
+    default: module.BookingHotels,
+  })),
+);
+
+const AccountCustommer = lazy(
+  () => import('@/pages/ManagementAccounts/AccountCustommer/AccountCustommer'),
+);
+const AccountUnit = lazy(
+  () => import('@/pages/ManagementAccounts/AccountUnit/AccountUnit'),
+);
+
+const AttractionsPage = lazy(() => import('@/pages/Attractions'));
+const CreateAttraction = lazy(
+  () => import('@/pages/Attractions/CreateAttraction/CreateAttraction'),
+);
+const EditAttraction = lazy(
+  () => import('@/pages/Attractions/EditAttraction/EditAttraction'),
+);
+
+const ECommerce = lazy(() => import('@/pages/Dashboard/ECommerce'));
+
+const HotelsPage = lazy(() => import('@/pages/Hotels'));
+const CreateHotel = lazy(
+  () => import('@/pages/Hotels/CreateHotel/CreateHotel'),
+);
+const EditHotel = lazy(() => import('@/pages/Hotels/EditHotel/EditHotel'));
 
 export const privateRoute = (
   <Route element={<AuthMiddleware />}>

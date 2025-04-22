@@ -1,4 +1,10 @@
+import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
+import DatePickerVI from '@/components/DatePickerVI/DatePickerVI';
+import Icon from '@/components/Icon/Icon';
+import InputDebounce from '@/components/InputDebounce/InputDebounce';
 import ModalConfirmDelete from '@/components/ModalConfirmDelete/ModalConfirmDelete';
+import checkInvalidateDDMMYYYY from '@/utils/checkInvalidate';
+import { formatDate } from '@/utils/formatDate';
 import formatVietnamCurrency from '@/utils/formatPrice';
 import { Button, Input, Modal, Select, Tooltip, Typography } from 'antd';
 import clsx from 'clsx';
@@ -14,13 +20,7 @@ import {
   MdOutlineQuestionMark,
 } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb';
-import DatePickerVI from '@/components/DatePickerVI/DatePickerVI';
-import Icon from '@/components/Icon/Icon';
-import InputDebounce from '@/components/InputDebounce/InputDebounce';
-import checkInvalidateDDMMYYYY from '@/utils/checkInvalidate';
 import { listWarningAttraction } from './constant';
-import { formatDate } from '@/utils/formatDate';
 
 const AttractionViews = (props) => {
   const {
@@ -47,17 +47,15 @@ const AttractionViews = (props) => {
   const { Option } = Select;
 
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-4 bg-white rounded-2xl p-3">
       <Breadcrumb pageName="Địa điểm du lịch" />
       <Typography.Title level={4}>
         Danh sách các địa điểm tham quan
       </Typography.Title>
       <div className="w-full flex items-center justify-between">
-        <Typography.Title level={5}>
-          Có tất cả
-          <span className="font-semibold"> {listAttractions.length} </span>
-          địa điểm tham quan
-        </Typography.Title>
+        <h4 className="text-lg font-semibold">
+          Có tất cả {listAttractions.length} địa điểm tham quan
+        </h4>
         <div className="gap-x-2 flex items-center justify-center">
           <Button
             className="bg-green-500 text-white"
@@ -74,10 +72,10 @@ const AttractionViews = (props) => {
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-y-2 text-[1rem] ">
+      <div className="flex flex-col gap-y-3 text-base">
         <div>
-          <h3 className="text-red-500 font-semibold">1.Lưu ý:</h3>
-          <ul className="text-[0.95rem]  font-normal list-disc pl-4">
+          <h3 className="text-red-500 font-medium mb-2">1.Lưu ý:</h3>
+          <ul className="text-sm  font-normal list-disc grid gap-2 pl-4">
             <li>
               Nếu có thắc mắc về việc sử dụng hãy liên hệ với quản trị viên để
               được hướng dẫn sử dụng
@@ -90,8 +88,10 @@ const AttractionViews = (props) => {
           </ul>
         </div>
         <div>
-          <h3 className="text-red-500 font-semibold">2.Thông báo hiển thị:</h3>
-          <ul className="text-[0.95rem]  list-disc pl-4 font-normal">
+          <h3 className="text-red-500 font-medium mb-2">
+            2.Thông báo hiển thị:
+          </h3>
+          <ul className="text-sm list-disc pl-4 font-normal">
             {listWarningAttraction.map((item, index) => {
               return (
                 <li
@@ -108,7 +108,7 @@ const AttractionViews = (props) => {
           </ul>
         </div>
         <div>
-          <h3 className="text-red-500 font-semibold">3.Sử dụng tìm kiếm:</h3>
+          <h3 className="text-red-500 font-medium mb-2">3.Sử dụng tìm kiếm:</h3>
           <ul className="text-[0.95rem]  list-disc pl-4 font-normal">
             <li>
               Với 2 ô tìm kiếm, hàng trên là dành cho người lớn, hàng dưới trẻ
@@ -122,35 +122,35 @@ const AttractionViews = (props) => {
         <table className="table min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr>
-              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
                 STT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[150px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[150px] relative">
                 Tên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[140px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[140px] relative">
                 Địa chỉ
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ảnh
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Số vé còn lại:
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -158,35 +158,35 @@ const AttractionViews = (props) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Ngày bắt đầu
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  min-w-[180px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  min-w-[180px] relative">
                 Giá
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[60px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[60px] relative">
                 Số ngày diễn ra
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[70px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[70px] relative">
                 Hủy miễn phí
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[60px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[60px] relative">
                 Đánh giá
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -194,21 +194,21 @@ const AttractionViews = (props) => {
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
 
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Tiêu chí
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Trạng thái
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Tùy chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -470,12 +470,15 @@ const AttractionViews = (props) => {
             </tr>
             {listAttractions.length > 0 ? (
               listAttractions.map((e, i) => {
+                console.log(checkInvalidateDDMMYYYY(e.startDate));
                 return (
                   <tr
                     key={i}
                     className={clsx(
                       'text-black transition-all duration-150',
-                      !checkInvalidateDDMMYYYY(e.startDate) && 'bg-gray-200',
+                      checkInvalidateDDMMYYYY(e.startDate)
+                        ? 'bg-gray-300'
+                        : 'bg-white',
                     )}
                   >
                     <td className="z-[10] text-xs border  text-center font-normal border-gray-300  border-l-1 border-t-0 p-2  w-[40px] relative">
@@ -485,7 +488,7 @@ const AttractionViews = (props) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-[0.87rem] text-start border  font-semibold border-gray-300 border-l-0 border-t-0 p-2  relative">
+                    <td className="z-[10] text-sm text-start border  font-medium border-gray-300 border-l-0 border-t-0 p-2  relative">
                       {e.name}
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -506,7 +509,7 @@ const AttractionViews = (props) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] font-semibold text-[0.8rem] border text-start border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10] font-normal text-[0.8rem] border text-start border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       <span
                         className={clsx(
                           e?.numberOfTickets.adult == 0 && 'text-red-600',
@@ -537,7 +540,7 @@ const AttractionViews = (props) => {
                               });
                             }}
                             className={clsx(
-                              'text-[0.8rem] px-[4px] border-blue_main_sub text-blue_main_sub',
+                              'text-[0.8rem] px-[4px] border-blue_sub text-blue_sub',
                               e.numberOfTickets.adult == 0 ||
                                 (e.numberOfTickets.children == 0 &&
                                   'border-red-400 text-red-600 !hover:border-red-600 !hover:text-red-700'),
@@ -558,12 +561,12 @@ const AttractionViews = (props) => {
                             cancelText="Hủy"
                             onCancel={handleCloseUploadTickets}
                             onOk={handleUpdateNumberOfTickets}
-                            className="text-black_main"
+                            className="text-black"
                             centered
                           >
                             <span className="font-medium block ">
                               Cập nhật lại vé:{' '}
-                              <span className="font-semibold text-blue_main_sub text-[1rem]">
+                              <span className="font-semibold text-blue_sub text-[1rem]">
                                 {e.name}
                               </span>
                             </span>
@@ -612,13 +615,13 @@ const AttractionViews = (props) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-xs text-start font-semibold  border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
+                    <td className="z-[10] text-xs text-start font-normal  border   border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       <span
                         className={clsx(
                           'text-center block',
                           !checkInvalidateDDMMYYYY(formatDate(e.startDate))
                             ? 'text-red-600'
-                            : 'text-black_main',
+                            : 'text-black',
                         )}
                       >
                         {formatDate(e.startDate)}
@@ -633,7 +636,7 @@ const AttractionViews = (props) => {
                                 id: e._id,
                               });
                             }}
-                            className="text-[0.8rem] px-[4px]"
+                            className="text-xs px-[4px]"
                           >
                             <MdCalendarMonth /> Cập nhật ngày
                           </Button>
@@ -651,11 +654,11 @@ const AttractionViews = (props) => {
                             cancelText="Hủy"
                             onCancel={handleCloseDatePicker}
                             onOk={handleSendSetDate}
-                            className="text-black_main"
+                            className="text-black"
                           >
                             <span className="font-medium block ">
                               Cập nhật lại ngày:{' '}
-                              <span className="font-semibold text-blue_main_sub text-[1rem]">
+                              <span className="font-semibold text-blue_sub text-[1rem]">
                                 {e.name}
                               </span>
                             </span>
@@ -678,17 +681,17 @@ const AttractionViews = (props) => {
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] text-[0.8rem] border  font-normal border-gray-300 border-l-0 border-t-0 p-2  relative">
+                    <td className="z-[10] text-xs border  font-normal border-gray-300 border-l-0 border-t-0 p-2  relative">
                       <div className="flex flex-col">
-                        <span className="font-semibold">
+                        <span className="font-medium ">
                           Người lớn:
-                          <span className="text-blue_main_sub">
+                          <span className="text-blue_sub">
                             {formatVietnamCurrency(e.price[0])}
                           </span>
                         </span>
-                        <span className="font-semibold">
+                        <span className="font-medium ">
                           Trẻ em:
-                          <span className="text-blue_main_sub">
+                          <span className="text-blue_sub">
                             {formatVietnamCurrency(e.price[1])}
                           </span>
                         </span>
@@ -736,7 +739,7 @@ const AttractionViews = (props) => {
                     </td>
                     <td className="z-[10] text-xs border  text-center font-normal border-gray-300 border-l-0 border-t-0 p-2  w-[100px] relative">
                       {e.isActive === true ? (
-                        <span className="font-semibold text-blue-600">
+                        <span className="font-semibold text-blue_sub">
                           Hoạt động
                         </span>
                       ) : (
@@ -755,39 +758,41 @@ const AttractionViews = (props) => {
                           onClick={() => {
                             navigate('/attractions/edit?slug=' + e.slug);
                           }}
-                          className="text-blue_main_sub"
+                          className="text-blue_sub"
                           tooltip="Sửa"
                         >
                           <MdModeEdit />
                         </Icon>
                         {e.isActive === true ? (
-                          <Icon
-                            className="w-fit text-purple-700"
+                          <Button
+                            size="small"
+                            className="w-fit text-black_sub"
                             onClick={() => {
                               handleUpdateStatus({
                                 data: { isActive: false },
                                 id: e._id,
                               });
                             }}
-                            tooltip="Dừng HĐ"
                           >
-                            <MdLockOutline />
-                          </Icon>
+                            <MdLockOutline /> Dừng HĐ
+                          </Button>
                         ) : (
-                          <Icon
-                            className="w-fit text-green_main"
+                          <Button
+                            size="small"
+                            className="w-fit text-green"
                             onClick={() => {
                               handleUpdateStatus({
                                 data: { isActive: true },
                                 id: e._id,
                               });
                             }}
-                            tooltip="Hoạt động"
                           >
                             <MdLockOpen />
-                          </Icon>
+                            Hoạt động
+                          </Button>
                         )}
-                        <Icon
+                        <Button
+                          size="small"
                           onClick={() => {
                             setOpenDel({
                               status: true,
@@ -795,10 +800,9 @@ const AttractionViews = (props) => {
                             });
                           }}
                           className="w-fit text-red-500"
-                          tooltip="Xóa"
                         >
-                          <MdOutlineDelete />
-                        </Icon>
+                          <MdOutlineDelete /> Xóa
+                        </Button>
                       </div>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                       <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>

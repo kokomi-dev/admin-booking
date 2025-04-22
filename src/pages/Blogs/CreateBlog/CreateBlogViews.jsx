@@ -75,7 +75,7 @@ export default function CreateBlogViews({
             </div>
             <EditorWrapper value={content} setValue={setContent} />
 
-            <p className="text-black_main">
+            <p className="text-black">
               <span className="text-red-600 font-medium text-[1rem]">
                 Lưu ý:
               </span>{' '}
@@ -85,12 +85,12 @@ export default function CreateBlogViews({
               từ lúc đăng vui lòng liên hệ với:{' '}
               <a
                 href="mailto:nguyenthean12062002@gmail.com"
-                className="text-blue_main_sub hover:underline "
+                className="text-blue_sub hover:underline "
               >
                 nguyenthean12062002@gmail.com
               </a>{' '}
               hoặc hotline:
-              <a href="tel:+0961563714" className="text-blue_main_sub">
+              <a href="tel:+0961563714" className="text-blue_sub">
                 {' '}
                 0912384747
               </a>
@@ -105,7 +105,7 @@ export default function CreateBlogViews({
               </Button>
               <div className="flex items-center justify-start gap-x-2">
                 <Button
-                  className="bg-yellow_main text-white"
+                  className="bg-yellow text-white"
                   htmlType="submit"
                   onClick={() => setIsDarft(true)}
                 >
@@ -113,7 +113,7 @@ export default function CreateBlogViews({
                 </Button>
                 <Button
                   htmlType="submit"
-                  className="bg-bg_primary_blue_sub text-white"
+                  className="bg-blue_main_sub text-white"
                   onClick={() => setIsDarft(false)}
                 >
                   Đăng bài viết

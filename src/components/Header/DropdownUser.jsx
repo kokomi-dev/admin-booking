@@ -28,7 +28,7 @@ const DropdownUser = () => {
             <span className="block text-sm font-semibold text-black dark:text-white ">
               {user.lastname + ' ' + user.firstname}
             </span>
-            <span className="block text-xs capitalize font-medium text-blue_main_sub">
+            <span className="block text-xs capitalize font-normal text-blue_sub">
               {user.roles}
             </span>
           </span>
@@ -63,7 +63,7 @@ const DropdownUser = () => {
               <li>
                 <Link
                   to="/profile"
-                  className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+                  className="flex items-center gap-3.5 text-sm font-normal duration-300 ease-in-out hover:text-primary lg:text-base"
                 >
                   <svg
                     className="fill-current"
@@ -88,7 +88,7 @@ const DropdownUser = () => {
               <li>
                 <Link
                   to="#"
-                  className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+                  className="flex items-center gap-3.5 text-sm font-normal duration-300 ease-in-out hover:text-primary lg:text-base"
                 >
                   <svg
                     className="fill-current"
@@ -116,7 +116,7 @@ const DropdownUser = () => {
                 navigate('/auth/signin');
                 window.location.reload();
               }}
-              className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+              className="flex items-center gap-3.5 px-6 py-4 text-sm font-normal duration-300 ease-in-out hover:text-primary lg:text-base"
             >
               <svg
                 className="fill-current"

@@ -1,5 +1,3 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useMemo, useState } from 'react';
 import Loader from '@/common/Loader';
 import MessNotify from '@/components/MessNotify/MessNotify';
 import { QUERY_KEY_ATTRACTION } from '@/configs/QuerykeyStore';
@@ -8,22 +6,31 @@ import {
   getAllAttractions,
   updateStatus,
 } from '@/services/api/attraction';
-import AttractionViews from './AttractionViews';
 import formatDateToISOString from '@/utils/formatDateToISO';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
+import AttractionViews from './AttractionViews';
 
 const AttractionsPage = () => {
+  const user = useSelector((state) => state.auth.user);
   const { data: listAttractions, isLoading } = useQuery({
     queryKey: [QUERY_KEY_ATTRACTION.GET_ALL],
     queryFn: async () => {
-      const data = await getAllAttractions();
-      if (data && data.data.length > 0) {
-        return data.data;
+      const res = await getAllAttractions({
+        unitCode: user.idCode,
+        roles: user.roles,
+      });
+      if (res && res.status === 200) {
+        console.log(res);
+        return res.data.data;
       } else {
         return [];
       }
     },
     retry: 3,
     retryDelay: 1000,
+    enabled: Boolean(user?.idCode && user?.roles),
   });
   const mutationUpdateStatus = useMutation({ mutationFn: updateStatus });
   const mutationDelete = useMutation({ mutationFn: delAttractions });

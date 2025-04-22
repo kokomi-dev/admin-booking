@@ -56,7 +56,7 @@ const SignIn = () => {
   }
   return (
     <>
-      <h1 className="uppercase text-[1.6rem] text-center py-4 text-black_main font-bold">
+      <h1 className="uppercase text-[1.6rem] text-center py-4 text-black font-bold">
         quản trị kokotravel
       </h1>
       <div className="max-w-[1100px] mx-auto rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -246,7 +246,7 @@ const SignIn = () => {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="w-full bg-bg_primary_active text-white"
+                    className="w-full bg-blue_main_active text-white"
                   >
                     Đăng nhập
                   </Button>

@@ -15,7 +15,6 @@ const AccountCustommer = () => {
     numberPhone: '',
     email: '',
     isActive: '',
-    isNewbie: '',
   });
   const { data: listAccountCustommer, isLoading } = useQuery({
     queryKey: [QUERY_KEY_ACCOUNT.GET_ALL_CUSTOMMER],

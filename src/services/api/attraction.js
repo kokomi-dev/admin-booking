@@ -1,20 +1,8 @@
 import axiosClient from '@/configs/axiosClient';
 
 const api = 'http://localhost:8080/api/attraction';
-const getAllAttractions = async (query) => {
-  try {
-    const queryString = new URLSearchParams(query).toString();
-    const res = await fetch(api + '?' + queryString, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const result = await res.json();
-    return result;
-  } catch (error) {
-    console.log(error);
-  }
+const getAllAttractions = ({ unitCode, roles }) => {
+  return axiosClient.get(`/attraction?unitCode=${unitCode}&roles=${roles}`);
 };
 const addAttracion = async (formData) => {
   try {

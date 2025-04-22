@@ -373,10 +373,10 @@ const HotelListRoomView = ({
                     </ul>
                   </td>
 
-                  <td className="z-[10] text-blue_main_sub text-xs text-center border  font-semibold border-gray-300 border-l-0 border-t-0 p-2  ">
+                  <td className="z-[10] text-blue_sub text-xs text-center border  font-semibold border-gray-300 border-l-0 border-t-0 p-2  ">
                     {e.numberPeople}
                   </td>
-                  <td className="z-[10] text-blue_main_sub text-xs text-center border  font-semibold border-gray-300 border-l-0 border-t-0 p-2  ">
+                  <td className="z-[10] text-blue_sub text-xs text-center border  font-semibold border-gray-300 border-l-0 border-t-0 p-2  ">
                     {e?.numberOfRoom}
                   </td>
                   <td className="z-[10] text-center text-xs border text-black font-normal border-gray-300 border-l-0 border-t-0 p-2 ">
@@ -389,12 +389,12 @@ const HotelListRoomView = ({
                   <td className="z-[10] text-xs text-center border text-black font-semibold border-gray-300 border-l-0 border-t-0 p-2  ">
                     {formatVietnamCurrency(e.price)}
                   </td>
-                  <td className="z-[10]  text-xs text-center border text-green_main font-medium border-gray-300 border-l-0 border-t-0 p-2   ">
+                  <td className="z-[10]  text-xs text-center border text-green font-medium border-gray-300 border-l-0 border-t-0 p-2   ">
                     {e.sale} %
                   </td>
                   <td className="z-[10]  text-xs text-center border  font-medium border-gray-300 border-l-0 border-t-0 p-2   ">
                     {e?.isActive === true ? (
-                      <span className="text-green_main">Hoạt động</span>
+                      <span className="text-green">Hoạt động</span>
                     ) : (
                       <span className="text-red-600 font-medium">Không HĐ</span>
                     )}
@@ -403,7 +403,7 @@ const HotelListRoomView = ({
                   <td className="z-[10] text-xs  text-center border text-black font-normal border-gray-300  border-t-0 p-2 relative  ">
                     <div className="w-full flex items-center justify-center gap-x-1 border-none">
                       <Icon
-                        className="text-blue_main_sub"
+                        className="text-blue_sub"
                         tooltip="Sửa"
                         onClick={() =>
                           setIsOpenEdit({
@@ -441,7 +441,7 @@ const HotelListRoomView = ({
                               },
                             });
                           }}
-                          className="text-green_main"
+                          className="text-green"
                           tooltip="Hoạt động"
                         >
                           <MdLockOpen />

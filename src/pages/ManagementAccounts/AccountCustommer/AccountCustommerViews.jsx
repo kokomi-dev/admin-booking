@@ -30,7 +30,7 @@ const AccountCustommerViews = ({
     name: '',
   });
   return (
-    <div className="text-start text-[0.9rem] flex flex-col  gap-y-4">
+    <div className="text-start text-[0.9rem] flex flex-col  gap-y-4 bg-white rounded-2xl p-3">
       <Breadcrumb pageName="Tài khoản người dùng" />
 
       <div className="w-full flex items-center justify-between">
@@ -55,8 +55,8 @@ const AccountCustommerViews = ({
         </div>
       </div>
       <div>
-        <h2 className="text-red-500 font-semibold">Danh mục tính năng:</h2>
-        <ul className="text-[0.9rem] font-medium text-black_main">
+        <h2 className="text-red-500 font-semibold mb-2">Danh mục tính năng:</h2>
+        <ul className="text-sm font-normal text-black">
           <li>Không hoạt động: tài khoản sẽ không đăng nhập được trên web</li>
         </ul>
       </div>
@@ -64,57 +64,50 @@ const AccountCustommerViews = ({
         <table className="table min-w-max w-full h-auto overflow-auto  border-spacing-0">
           <thead className="text-black">
             <tr>
-              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-bg_primary_main p-2  w-[50px] relative">
+              <th className="z-[5] text-xs border text-white_main border-gray-300  border-l-0 border-t-0 bg-blue_main p-2  w-[50px] relative">
                 Chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 STT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[180px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[180px] relative">
                 Tên
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Số ĐT
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Email
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Tình trạng
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </th>
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
-                Trạng thái
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </th>
 
-              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-bg_primary_main p-2  w-[100px] relative">
+              <th className="z-[10] text-xs border text-white_main border-gray-300 border-l-0 border-t-0 bg-blue_main p-2  w-[100px] relative">
                 Tùy chọn
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
                 <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
@@ -200,24 +193,7 @@ const AccountCustommerViews = ({
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                 <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
               </td>
-              <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
-                <Select
-                  size="small"
-                  className="no-spinner w-[95px]"
-                  value={filter.isNewbie}
-                  onChange={(value) => {
-                    setFilter((pre) => ({ ...pre, isNewbie: value }));
-                  }}
-                >
-                  <Option value="">Tất cả</Option>
-                  <Option value={false}>Không</Option>
-                  <Option value={true}>Người mới</Option>
-                </Select>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-              </td>
+
               <td className="text-xs z-[5] bg-white border border-l-0 border-t-0 border-gray-300 p-2 relative  text-center">
                 <Select
                   size="small"
@@ -286,16 +262,10 @@ const AccountCustommerViews = ({
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
                       <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
                     </td>
-                    <td className="z-[10] font-semibold text-center text-xs border  border-gray-300 border-l-0 border-t-0 p-2 relative">
-                      {e.isNewbie === true ? <span>Người mới</span> : <></>}
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -left-[1px]"></span>
-                      <span className="block absolute top-0 bottom-0 w-[1px] bg-gray-300 -right-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -top-[1px]"></span>
-                      <span className="block absolute left-0 right-0 h-[1px] bg-gray-300 -bottom-[1px]"></span>
-                    </td>
+
                     <td className="z-[10] text-xs text-center font-medium  border   border-gray-300 border-l-0 border-t-0 p-2 relative">
                       {e.isActive === true ? (
-                        <span className="text-green_main">Hoạt động</span>
+                        <span className="text-green">Hoạt động</span>
                       ) : (
                         <span className="text-red-500">Chặn HĐ</span>
                       )}
@@ -329,7 +299,7 @@ const AccountCustommerViews = ({
                                 data: { isActive: true },
                               });
                             }}
-                            className="text-blue_main"
+                            className="text-blue"
                             tooltip="Hoạt động"
                           >
                             <MdLockOpen />

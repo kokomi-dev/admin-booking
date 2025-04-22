@@ -1,6 +1,6 @@
 import Loader from '@/common/Loader';
 import { QUERY_KEY_BOOKING } from '@/configs/QuerykeyStore';
-import { getBookingAttraction } from '@/services/api/booking';
+import { getBookingAttraction, getBookingHotel } from '@/services/api/booking';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';

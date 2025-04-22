@@ -318,7 +318,7 @@ const EditHotelView = ({
 
         <Button
           type="primary"
-          className="w-full h-auto py-2 bg-bg_primary_blue_sub text-white"
+          className="w-full h-auto py-2 bg-blue_main_sub text-white"
           htmlType="submit"
         >
           Hoàn tất chỉnh sửa

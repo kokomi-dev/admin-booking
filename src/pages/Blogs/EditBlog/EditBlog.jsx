@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import EditBlogViews from './EditBlogViews';
+import { delImageOnCloundinary } from '@/services/api/image';
 
 const EditBlog = () => {
   const [params] = useSearchParams();
@@ -39,6 +40,9 @@ const EditBlog = () => {
   const mutaionEditBlog = useMutation({
     mutationFn: editBlog,
   });
+  const mutationDelImg = useMutation({
+    mutationFn: delImageOnCloundinary,
+  });
   const handleEditBlog = (data) => {
     let req = {};
     //  không có sự thay đổi content
@@ -59,6 +63,7 @@ const EditBlog = () => {
       mutationDelImg.mutate(idDelete, {
         onSuccess: async (res) => {
           if (res.status === 200) {
+            console.log('thành công');
           }
         },
         onError: async (error) => {

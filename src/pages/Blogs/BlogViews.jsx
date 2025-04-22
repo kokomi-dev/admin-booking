@@ -21,7 +21,7 @@ const BlogView = ({
       <Breadcrumb pageName="Danh sách bài viết đã đăng" />
       <div className="flex flex-col gap-y-4 mt-8">
         <div className="flex items-center justify-between">
-          <div className="min-w-fit text-black_main flex gap-3 justify-start items-center flex-wrap">
+          <div className="min-w-fit text-black flex gap-3 justify-start items-center flex-wrap">
             <span>Tìm kiếm: </span>
             <div className="min-w-[100px] flex justify-start items-center gap-2 ">
               <Select className="w-full">
@@ -44,14 +44,14 @@ const BlogView = ({
               onClick={() => {
                 navigate('/blogs/create');
               }}
-              className="bg-bg_primary_blue_sub text-white"
+              className="bg-blue_main_sub text-white"
             >
               <MdAdd />
               Thêm mới
             </Button>
             <Button
               disabled={checkedItem.length === 0}
-              className="bg-bg_primary_yellow text-white border-none"
+              className="bg-yellow text-white border-none"
             >
               <MdLockOutline />
               Hiển thị nhiều
