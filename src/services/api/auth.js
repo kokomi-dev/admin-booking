@@ -1,7 +1,6 @@
 import axiosClient from '../../configs/axiosClient';
 
-const api_url = 'http://localhost:8080/api';
-
+const api_url = `${import.meta.env.VITE_PORT_SERVER}/api`;
 const reqRegister = async (data) => {
   const res = await fetch(api_url + '/auth/register', {
     method: 'POST',
