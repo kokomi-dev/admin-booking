@@ -1,7 +1,14 @@
+import { QUERY_KEY_ATTRACTION, QUERY_KEY_HOTEL } from '@/configs/QuerykeyStore';
+import {
+  getTotalBookingAttraction,
+  getTotalBookingHotel,
+} from '@/services/api/booking';
+import formatVietnamCurrency from '@/utils/formatPrice';
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const options = {
+export const options = {
   legend: {
     show: false,
     position: 'top',
@@ -9,7 +16,7 @@ const options = {
   },
   colors: ['#3C50E0', '#80CAEE'],
   chart: {
-    fontFamily: 'Satoshi, sans-serif',
+    fontFamily: 'Be VietNam Pro, sans-serif',
     height: 335,
     type: 'area',
     dropShadow: {
@@ -22,8 +29,52 @@ const options = {
     },
     toolbar: {
       show: true,
+      tools: {
+        download: true,
+        selection: false,
+        zoom: false,
+        zoomin: false,
+        zoomout: false,
+        pan: false,
+        reset: false,
+      },
+      export: {
+        csv: {
+          filename: 'Du-lieu-cua-toi',
+          columnDelimiter: ',',
+          headerCategory: 'Danh mục',
+          headerValue: 'Giá trị',
+        },
+        svg: {
+          filename: 'Bieu-do',
+        },
+        png: {
+          filename: 'Bieu-do',
+        },
+      },
+    },
+    zoom: {
+      enabled: false,
     },
   },
+  locales: [
+    {
+      name: 'vi',
+      options: {
+        toolbar: {
+          exportToSVG: 'Tải về SVG',
+          exportToPNG: 'Tải về PNG',
+          exportToCSV: 'Tải về CSV',
+          selection: 'Chọn',
+          selectionZoom: 'Zoom chọn',
+          zoomIn: 'Phóng to',
+          zoomOut: 'Thu nhỏ',
+          pan: 'Di chuyển',
+          reset: 'Đặt lại',
+        },
+      },
+    },
+  ],
   responsive: [
     {
       breakpoint: 1024,
@@ -46,10 +97,9 @@ const options = {
     width: [2, 2],
     curve: 'straight',
   },
-  // labels: {
-  //   show: false,
-  //   position: "top",
-  // },
+  y: {
+    formatter: (value) => formatVietnamCurrency(value),
+  },
   grid: {
     xaxis: {
       lines: {
@@ -109,7 +159,10 @@ const options = {
       },
     },
     min: 0,
-    max: 100,
+    max: 50000000,
+    labels: {
+      formatter: (value) => formatVietnamCurrency(value),
+    },
   },
 };
 
@@ -118,17 +171,86 @@ const ChartOne = () => {
     series: [
       {
         name: 'Địa điểm du lịch',
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
+        data: [],
       },
 
       {
         name: 'Lưu trú',
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
+        data: [],
       },
     ],
   });
+  // get total attraction
+  const { data: totalAttraction, isLoading: isLoadingAtt } = useQuery({
+    queryKey: [QUERY_KEY_ATTRACTION.TOTAL],
+    queryFn: async () => {
+      const res = await getTotalBookingAttraction({
+        all: true,
+        date: false,
+        week: false,
+        month: {
+          status: false,
+          value: '',
+        },
+      });
+      if (res && res.status === 200) {
+        const totalRevenueArray = res.data.data.map(
+          (item) => item.totalRevenue,
+        );
+        return setState((prev) => ({
+          ...prev,
+          series: prev.series.map((serie) =>
+            serie.name === 'Địa điểm du lịch'
+              ? {
+                  ...serie,
+                  data: [...totalRevenueArray, 0, 0, 0, 0, 0, 0, 0, 0],
+                }
+              : serie,
+          ),
+        }));
+      } else {
+        return [];
+      }
+    },
+    retry: 3,
+    retryDelay: 1000,
+  });
+  // get total hotel
+  const { data: totalHotel, isLoading: isLoadingHotel } = useQuery({
+    queryKey: [QUERY_KEY_HOTEL.TOTAL],
+    queryFn: async () => {
+      const res = await getTotalBookingHotel({
+        all: true,
+        date: false,
+        week: false,
+        month: {
+          status: false,
+          value: '',
+        },
+      });
+      if (res && res.status === 200) {
+        const totalRevenueArray = res.data.data.map(
+          (item) => item.totalRevenue,
+        );
+        return setState((prev) => ({
+          ...prev,
+          series: prev.series.map((serie) =>
+            serie.name === 'Lưu trú'
+              ? {
+                  ...serie,
+                  data: [...totalRevenueArray, 0, 0, 0, 0, 0, 0, 0, 0],
+                }
+              : serie,
+          ),
+        }));
+      } else {
+        return [];
+      }
+    },
+    retry: 3,
+    retryDelay: 1000,
+  });
   const [timeTotal, setTimeTotal] = useState();
-
   const handleReset = () => {
     setState((prevState) => ({
       ...prevState,
@@ -140,29 +262,15 @@ const ChartOne = () => {
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
-          <div className="flex min-w-47.5">
-            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
-            </span>
-            <div className="w-full">
-              <p className="font-semibold text-primary">Doanh thu</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
-            </div>
+          <div className="w-full text-nowrap">
+            <p className="font-semibold text-primary text-lg mb-2">
+              Doanh thu qua các tháng
+            </p>
+            <p className="text-sm font-medium">01/01.2025 - 31/12/2025</p>
           </div>
-          {/* <div className="flex min-w-47.5">
-            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-secondary">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-secondary"></span>
-            </span>
-            <div className="w-full">
-              <p className="font-semibold text-secondary">
-                Lượng tiếp cận khách hàng
-              </p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
-            </div>
-          </div> */}
         </div>
         <div className="flex w-full max-w-45 justify-end">
-          <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
+          {/* <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
             <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
               Ngày
             </button>
@@ -172,7 +280,7 @@ const ChartOne = () => {
             <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
               Tháng
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

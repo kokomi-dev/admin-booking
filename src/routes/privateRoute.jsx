@@ -40,6 +40,7 @@ const CreateHotel = lazy(
   () => import('@/pages/Hotels/CreateHotel/CreateHotel'),
 );
 const EditHotel = lazy(() => import('@/pages/Hotels/EditHotel/EditHotel'));
+const Chat = lazy(() => import('@/pages/Chat/page'));
 
 export const privateRoute = (
   <Route element={<AuthMiddleware />}>
@@ -148,6 +149,15 @@ export const privateRoute = (
         <>
           <PageTitle title="Chỉnh sửa bài viết" />
           <EditBlog />
+        </>
+      }
+    />
+    <Route
+      path="/chat"
+      element={
+        <>
+          <PageTitle title="Trò chuyện" />
+          <Chat />
         </>
       }
     />

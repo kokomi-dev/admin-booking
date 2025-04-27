@@ -14,14 +14,10 @@ const BookingHotels = () => {
   const queryClient = useQueryClient();
   const user = useSelector((state) => state.auth.user);
   const [filter, setFilter] = useState({
+    emailUser: '',
     hotelName: '',
-    hotelAddress: '',
     paymentMethod: '',
     totalBooked: '',
-    numberOfTicketAdult: '',
-    numberOfTicketChildren: '',
-    dateStart: '',
-    hourStart: '',
     bookedDate: '',
     isSuccess: '',
   });
@@ -51,27 +47,14 @@ const BookingHotels = () => {
           const filterValue = filter[key];
           const itemValue = item[key];
           if (filterValue === '' || filterValue === 0) return true;
+          if (filter.emailUser) {
+            return item.infoUser.email
+              ?.toString()
+              .toLowerCase()
+              .includes(filterValue.toString().toLowerCase());
+          }
           if (filter.hotelName) {
             return item.infoHotel.name
-              ?.toString()
-              .toLowerCase()
-              .includes(filterValue.toString().toLowerCase());
-          }
-          if (filter.hotelAddress) {
-            return item.infoHotel.address
-              ?.toString()
-              .toLowerCase()
-              .includes(filterValue.toString().toLowerCase());
-          }
-
-          if (filter.numberOfTicketAdult) {
-            return item.numberOfTicketsBooked.adult
-              ?.toString()
-              .toLowerCase()
-              .includes(filterValue.toString().toLowerCase());
-          }
-          if (filter.numberOfTicketChildren) {
-            return item.numberOfTicketsBooked.children
               ?.toString()
               .toLowerCase()
               .includes(filterValue.toString().toLowerCase());
