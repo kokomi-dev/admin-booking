@@ -12,6 +12,7 @@ const ECommerceViews = ({
 }) => {
   return (
     <>
+      <div className="text-xl font-semibold mb-4">Thống kê tổng quan</div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
         <CardDataStats title="Địa điểm du lịch" total={lengthAttraction}>
           <MdOutlineShareLocation
@@ -74,7 +75,7 @@ const ECommerceViews = ({
           <div className="col-span-12 xl:col-span-12">
             <ChartOne />
             <ChartTwo />
-            <TableOne />
+            {/* <TableOne /> */}
           </div>
         )}
       </div>

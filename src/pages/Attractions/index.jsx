@@ -22,7 +22,6 @@ const AttractionsPage = () => {
         roles: user.roles,
       });
       if (res && res.status === 200) {
-        console.log(res);
         return res.data.data;
       } else {
         return [];

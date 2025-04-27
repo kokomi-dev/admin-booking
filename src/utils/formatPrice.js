@@ -1,7 +1,9 @@
-function formatVietnamCurrency(number) {
-  return new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
-  }).format(number);
-}
+const formatVietnamCurrency = (amount) => {
+  if (amount) {
+    return amount?.toLocaleString('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    });
+  } else return 0;
+};
 export default formatVietnamCurrency;

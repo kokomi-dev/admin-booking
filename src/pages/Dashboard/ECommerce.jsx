@@ -28,7 +28,6 @@ const ECommerce = () => {
             unitCode: user.idCode,
           });
           if (res && res.status === 200) {
-            console.log(res);
             return res.data.data;
           }
         },
