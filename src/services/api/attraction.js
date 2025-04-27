@@ -1,6 +1,6 @@
 import axiosClient from '@/configs/axiosClient';
 
-const api = 'http://localhost:8080/api/attraction';
+const api = `${import.meta.env.VITE_PORT_SERVER}/api/attraction`;
 const getAllAttractions = ({ unitCode, roles }) => {
   return axiosClient.get(`/attraction?unitCode=${unitCode}&roles=${roles}`);
 };

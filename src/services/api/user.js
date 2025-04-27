@@ -1,6 +1,6 @@
 import axiosClient from '@/configs/axiosClient';
 
-const api_url = 'http://localhost:8080/api';
+const api_url = `${import.meta.env.VITE_PORT_SERVER}/api`;
 
 const getAllUser = async (query) => {
   try {

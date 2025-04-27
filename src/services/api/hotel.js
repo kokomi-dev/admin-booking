@@ -1,6 +1,6 @@
 import axiosClient from '@/configs/axiosClient';
 
-const api = 'http://localhost:8080/api/hotel';
+const api = `${import.meta.env.VITE_PORT_SERVER}/api/hotel`;
 // HOTEL
 const getAllHotels = async (query) => {
   try {
